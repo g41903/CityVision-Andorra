@@ -132,7 +132,215 @@
 
 
 
-    var styles=[{"featureType":"all","elementType":"geometry","stylers":[{"color":"#815f5f"}]},{"featureType":"all","elementType":"labels.text","stylers":[{"weight":"0.01"},{"visibility":"on"}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"},{"gamma":"0.14"}]},{"featureType":"administrative","elementType":"all","stylers":[{"hue":"#ffbf00"},{"saturation":100},{"lightness":-22},{"visibility":"on"}]},{"featureType":"administrative","elementType":"labels.text","stylers":[{"color":"#ffffff"},{"visibility":"on"}]},{"featureType":"administrative.land_parcel","elementType":"geometry.fill","stylers":[{"color":"#9f4e4e"}]},{"featureType":"landscape","elementType":"all","stylers":[{"hue":"#666666"},{"saturation":-100},{"lightness":-55},{"visibility":"on"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#1f0303"}]},{"featureType":"landscape.man_made","elementType":"geometry.stroke","stylers":[{"color":"#f91919"}]},{"featureType":"landscape.man_made","elementType":"labels.text","stylers":[{"color":"#00fff6"}]},{"featureType":"landscape.man_made","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"landscape.natural.landcover","elementType":"geometry.fill","stylers":[{"color":"#3b2828"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"color":"#e17a7a"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry.fill","stylers":[{"color":"#bb2828"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"hue":"#555555"},{"saturation":-100},{"lightness":-57},{"visibility":"on"}]},{"featureType":"poi","elementType":"labels","stylers":[{"hue":"#555555"},{"saturation":-100},{"lightness":-57},{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":"-61"},{"visibility":"on"},{"color":"#a9955b"},{"gamma":"1.19"},{"weight":"0.14"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#f9aa8a"}]},{"featureType":"road","elementType":"labels.text","stylers":[{"color":"#101010"},{"weight":"0.01"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.highway.controlled_access","elementType":"labels.icon","stylers":[{"color":"#706e6e"},{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"color":"#7d7676"},{"visibility":"off"}]},{"featureType":"road.local","elementType":"labels.icon","stylers":[{"color":"#757373"},{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"hue":"#444444"},{"lightness":-64},{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"hue":"#252525"},{"saturation":-100},{"lightness":-81},{"visibility":"on"}]}];
+    var styles = [{
+        "featureType": "all",
+        "elementType": "geometry",
+        "stylers": [{
+            "color": "#815f5f"
+        }]
+    }, {
+        "featureType": "all",
+        "elementType": "labels.text",
+        "stylers": [{
+            "weight": "0.01"
+        }, {
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [{
+            "color": "#ffffff"
+        }, {
+            "gamma": "0.14"
+        }]
+    }, {
+        "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [{
+            "hue": "#ffbf00"
+        }, {
+            "saturation": 100
+        }, {
+            "lightness": -22
+        }, {
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "administrative",
+        "elementType": "labels.text",
+        "stylers": [{
+            "color": "#ffffff"
+        }, {
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "administrative.land_parcel",
+        "elementType": "geometry.fill",
+        "stylers": [{
+            "color": "#9f4e4e"
+        }]
+    }, {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [{
+            "hue": "#666666"
+        }, {
+            "saturation": -100
+        }, {
+            "lightness": -55
+        }, {
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.fill",
+        "stylers": [{
+            "color": "#1f0303"
+        }]
+    }, {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+            "color": "#f91919"
+        }]
+    }, {
+        "featureType": "landscape.man_made",
+        "elementType": "labels.text",
+        "stylers": [{
+            "color": "#00fff6"
+        }]
+    }, {
+        "featureType": "landscape.man_made",
+        "elementType": "labels.text.fill",
+        "stylers": [{
+            "color": "#ffffff"
+        }]
+    }, {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "geometry.fill",
+        "stylers": [{
+            "color": "#3b2828"
+        }]
+    }, {
+        "featureType": "landscape.natural.terrain",
+        "elementType": "geometry",
+        "stylers": [{
+            "color": "#e17a7a"
+        }]
+    }, {
+        "featureType": "landscape.natural.terrain",
+        "elementType": "geometry.fill",
+        "stylers": [{
+            "color": "#bb2828"
+        }]
+    }, {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [{
+            "hue": "#555555"
+        }, {
+            "saturation": -100
+        }, {
+            "lightness": -57
+        }, {
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [{
+            "hue": "#555555"
+        }, {
+            "saturation": -100
+        }, {
+            "lightness": -57
+        }, {
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [{
+            "saturation": -100
+        }, {
+            "lightness": "-61"
+        }, {
+            "visibility": "on"
+        }, {
+            "color": "#a9955b"
+        }, {
+            "gamma": "1.19"
+        }, {
+            "weight": "0.14"
+        }]
+    }, {
+        "featureType": "road",
+        "elementType": "geometry.fill",
+        "stylers": [{
+            "color": "#f9aa8a"
+        }]
+    }, {
+        "featureType": "road",
+        "elementType": "labels.text",
+        "stylers": [{
+            "color": "#101010"
+        }, {
+            "weight": "0.01"
+        }]
+    }, {
+        "featureType": "road",
+        "elementType": "labels.icon",
+        "stylers": [{
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "road.highway.controlled_access",
+        "elementType": "labels.icon",
+        "stylers": [{
+            "color": "#706e6e"
+        }, {
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [{
+            "color": "#7d7676"
+        }, {
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "road.local",
+        "elementType": "labels.icon",
+        "stylers": [{
+            "color": "#757373"
+        }, {
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [{
+            "hue": "#444444"
+        }, {
+            "lightness": -64
+        }, {
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [{
+            "hue": "#252525"
+        }, {
+            "saturation": -100
+        }, {
+            "lightness": -81
+        }, {
+            "visibility": "on"
+        }]
+    }];
 
 
     // var styles = [{
@@ -260,178 +468,6 @@
         scale: 2,
         strokeWeight: 0
     };
-
-
-    $(function() {
-
-    });
-
-    var directionsDisplay;
-    var directionsService = new google.maps.DirectionsService();
-    // var map;
-    var startPoint = new google.maps.LatLng(42.36069, -71.08751);
-    var endPoint = new google.maps.LatLng(42.36069, -71.08751);
-
-
-
-
-    $(document).ready(function() {
-
-
-
-        function initialize() {
-            var latlng = new google.maps.LatLng(42.5052221,1.5219545);
-            var mapOptions = {
-                zoom: 15,
-                styles: styles,
-                center: latlng
-            }
-            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-            infowindow = new google.maps.InfoWindow();
-            addMarkers();
-            fetchWordData();
-
-            var infowindowMark1 = new google.maps.InfoWindow({
-                content: "Here's Andorra lavella"
-            });
-
-
-            var marker1 = new google.maps.Marker({
-                position: latlng,
-                map: map,
-                title: 'Hello World!'
-            });
-            google.maps.event.addListener(marker1, 'click', function() {
-                infowindowMark1.open(map, marker1);
-            });
-            infowindowMark1.open(map, marker1);
-
-
-
-
-
-
-
-            var infowindowMark2 = new google.maps.InfoWindow({
-                content: "Scenic route 5km 30min"
-            });
-
-
-            var marker2 = new google.maps.Marker({
-                position: new google.maps.LatLng(42.380994, -71.118972),
-                map: map,
-                title: 'Hello World!'
-            });
-            google.maps.event.addListener(marker2, 'click', function() {
-                infowindowMark2.open(map, marker2);
-            });
-            // infowindowMark2.open(map,marker2);
-
-
-
-
-
-            var infowindowMark3 = new google.maps.InfoWindow({
-                content: "Midium Challenge 15km 90min"
-            });
-            var marker3 = new google.maps.Marker({
-                position: new google.maps.LatLng(42.374210, -71.070220),
-                map: map,
-                title: 'Hello World!'
-            });
-            google.maps.event.addListener(marker3, 'click', function() {
-                infowindowMark3.open(map, marker3);
-            });
-            // infowindowMark3.open(map,marker3);
-
-
-
-
-            var infowindowMark4 = new google.maps.InfoWindow({
-                content: "Challenging route 28km 190min"
-            });
-            var marker4 = new google.maps.Marker({
-                position: new google.maps.LatLng(42.3002287, -71.1114684),
-                map: map,
-                title: 'Hello World!'
-            });
-            google.maps.event.addListener(marker4, 'click', function() {
-                infowindowMark4.open(map, marker4);
-            });
-            var routesArray = [routes, routes1, routes2];
-
-        }
-
-
-
-
-
-
-        function addMarkers() {
-            for (marker in markers) {
-                addMarker(marker, markers[marker], mcircle1f)
-            }
-
-            for (marker2 in markers2) {
-                addMarker(marker2, markers2[marker2], mcircle2f)
-            }
-
-            for (marker3 in markers3) {
-                addMarker(marker3, markers3[marker3], mcircle3f)
-            }
-
-        }
-
-        function fetchWordData() {
-            // TODO: read in the list of words and their counts associated with the word
-
-            // $("#autocomplete").autocomplete({
-            //     source: words,
-            //     minLength: 2,
-            //     select: function(event, ui) {
-            //         searchTerm(ui.item.label)
-            //     }
-            // });
-            // $("#autocomplete").keyup(function(e) {
-            //     if (e.keyCode == 13) {
-            //         val = $("#autocomplete").val()
-            //         searchTerm(val) 
-            //     }
-            // });
-        }
-
-        function searchTerm(term) {
-            alert("I AM SEARCHING FOR: " + term)
-                // TODO: Search the term in the list and change the map display
-        }
-
-        function addMarker(place, myLatLng, markcircle) {
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                title: place,
-                map: map
-            });
-            // marker.setIcon(mcircle1f);
-            marker.setIcon(markcircle);
-
-
-            // This can be changed from 'click' to 'hover' if desired
-            google.maps.event.addListener(marker, 'click', function() {
-                // TODO: Add more information about each location in the popup window
-
-                infowindow.setContent("<h3>" + place + "</h3>");
-                infowindow.open(map, this);
-
-
-
-            });
-        }
-
-
-
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-    });
     </script>
     <style type="text/css">
     html,
@@ -445,198 +481,24 @@
         height: 100%;
     }
     </style>
-    //arduino
-    <script type="text/javascript">
-    var accessToken = "b3fff61491cd22eea2502fe8964ab4455100e38d";
-    var deviceID = "290026000e47343432313031"
-    var url = "https://api.spark.io/v1/devices/" + deviceID + "/led";
-
-    function switch001() {
-        $.post(url, {
-            params: "0001",
-            access_token: accessToken
-        });
-        console.log("001");
-    }
-
-    function switch010() {
-        $.post(url, {
-            params: "0010",
-            access_token: accessToken
-        });
-    }
-
-    function switch011() {
-        $.post(url, {
-            params: "0011",
-            access_token: accessToken
-        });
-    }
-
-    function switch100() {
-        $.post(url, {
-            params: "0100",
-            access_token: accessToken
-        });
-    }
-
-    function switch101() {
-        $.post(url, {
-            params: "0101",
-            access_token: accessToken
-        });
-    }
-
-    function switch110() {
-        $.post(url, {
-            params: "0110",
-            access_token: accessToken
-        });
-    }
-
-    function switch111() {
-        $.post(url, {
-            params: "0111",
-            access_token: accessToken
-        });
-    }
-
-    function refresh() {
-        $.post(url, {
-            params: "0000",
-            access_token: accessToken
-        });
-    }
-
-    function restart() {
-        $.post(url, {
-            params: "1111",
-            access_token: accessToken
-        });
-    }
-    </script>
 </head>
 
 <body>
     <div id="map">
         <div class="ui-widget">
             <label for="autocomplete">Enter Keyword For Photo: </label>
-            <input id="autocomplete">
-            {{> tweet}}
-    
-            {{> task}}
+            <input id="autocomplete"> {{> tweet}} {{> task}}
+            <!-- {{> googleMap}} -->
         </div>
         <div id="map-canvas"></div>
     </div>
-    <!-- 	<div id="directionsPanel" style="float:right;width:30%;height 100%"></div> -->
+    <!--    <div id="directionsPanel" style="float:right;width:30%;height 100%"></div> -->
     <input type="button" onClick="renderDirection2()" value="Explore Easy!" />
     <input type="button" onClick="renderDirection()" value="Explore Medium!" />
     <input type="button" onClick="renderDirection3()" value="Explore Hard!" />
     <input type="button" onClick="renderDirection4()" value="Explore all!" />
     <input type="button" onClick="clearMarkers()" value="Clear Markers" />
-    <input type="button" onClick="switch001()" value="Here MAKE++" />
-    <input type="button" onClick="switch010()" value="Central" />
-    <input type="button" onClick="switch011()" value="Kennedy" />
-    <input type="button" onClick="switch100()" value="Harvard" />
-    <input type="button" onClick="switch101()" value="Longfellow" />
-    <input type="button" onClick="switch110()" value="MountAuburn" />
-    <input type="button" onClick="switch111()" value="MediaLab" />
-    <input type="button" onClick="refresh()" value="Refresh" />
-    <input type="button" onClick="restart()" value="Restart" />
     <script type="text/javascript">
-    // var markersSet=[markers,markers2,markers3];
-    var routesArray = [routes, routes1, routes2];
-    var routes = [{
-        origin: new google.maps.LatLng(42.3607764, -71.0878372),
-        destination: new google.maps.LatLng(42.35511, -71.06558)
-    }, {
-        origin: new google.maps.LatLng(42.35511, -71.06558),
-        destination: new google.maps.LatLng(42.3587, -71.05749)
-    }, {
-        origin: new google.maps.LatLng(42.3587, -71.05749),
-        destination: new google.maps.LatLng(42.3601, -71.05476)
-    }, {
-        origin: new google.maps.LatLng(42.3601, -71.05476),
-        destination: new google.maps.LatLng(42.37397, -71.05542)
-    }, {
-        origin: new google.maps.LatLng(42.37397, -71.05542),
-        destination: new google.maps.LatLng(
-            42.3607764, -71.0878372)
-    }];
-
-
-
-    var routes1 = [{
-        origin: new google.maps.LatLng(42.36069, -71.08751),
-        destination: new google.maps.LatLng(42.37334, -71.11891)
-    }, {
-        origin: new google.maps.LatLng(42.37334, -71.11891),
-        destination: new google.maps.LatLng(42.3709, -71.12323)
-    }, {
-        origin: new google.maps.LatLng(42.3709, -71.12323),
-        destination: new google.maps.LatLng(42.37695, -71.12638)
-    }, {
-        origin: new google.maps.LatLng(42.37695, -71.12638),
-        destination: new google.maps.LatLng(42.37486, -71.14242)
-    }, {
-        origin: new google.maps.LatLng(42.37486, -71.14242),
-        destination: new google.maps.LatLng(42.37341, -71.13112)
-    }, {
-        origin: new google.maps.LatLng(42.37341, -71.13112),
-        destination: new google.maps.LatLng(42.37348, -71.11908)
-    }];
-
-
-    var routes2 = [{
-            origin: new google.maps.LatLng(42.3607764, -71.0878372),
-            destination: new google.maps.LatLng(42.342464, -71.083617)
-        }, {
-            origin: new google.maps.LatLng(42.342464, -71.083617),
-            destination: new google.maps.LatLng(42.30065, -71.11387)
-        },
-
-        {
-            origin: new google.maps.LatLng(42.30065, -71.11387),
-            destination: new google.maps.LatLng(42.32934, -71.09578)
-        }, {
-            origin: new google.maps.LatLng(42.31463, -71.10538),
-            destination: new google.maps.LatLng(42.32282, -71.10102)
-        }, {
-            origin: new google.maps.LatLng(42.30628, -71.10944),
-            destination: new google.maps.LatLng(42.31463, -71.10538)
-        }, {
-            origin: new google.maps.LatLng(42.30065, -71.11387),
-            destination: new google.maps.LatLng(42.30628, -71.10944)
-        }
-    ];
-
-    var routes3 = [{
-        origin: new google.maps.LatLng(42.3607764, -71.0878372),
-        destination: new google.maps.LatLng(44.92131, -93.21405)
-    }, {
-        origin: new google.maps.LatLng(44.92131, -93.21405),
-        destination: new google.maps.LatLng(46.87894, -110.36282)
-    }, {
-        origin: new google.maps.LatLng(46.87894, -110.36282),
-        destination: new google.maps.LatLng(42.19465, -122.70926)
-    }, {
-        origin: new google.maps.LatLng(42.19465, -122.70926),
-        destination: new google.maps.LatLng(34.86973, -111.76097)
-    }, {
-        origin: new google.maps.LatLng(34.86973, -111.76097),
-        destination: new google.maps.LatLng(37.23881, -76.50964)
-    }, {
-        origin: new google.maps.LatLng(37.23881, -76.50964),
-        destination: new google.maps.LatLng(42.3607764, -71.0878372)
-    }];
-
-
-    var rendererOptions = {
-        preserveViewport: true
-            // suppressMarkers:true,
-            // routeIndex:i
-    };
-
 
 
     function renderDirection() {
@@ -766,67 +628,67 @@
     var formatCount = d3.format(",.0f");
 
     var margin = {
-            top: 10,
-            right: 30,
-            bottom: 30,
-            left: 30
-        },
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        top: 10,
+        right: 30,
+        bottom: 30,
+        left: 30
+    },
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
     var x = d3.scale.linear()
-        .domain([0, 1])
-        .range([0, width]);
+    .domain([0, 1])
+    .range([0, width]);
 
     // Generate a histogram using twenty uniformly-spaced bins.
     var data = d3.layout.histogram()
-        .bins(x.ticks(20))
-        (values);
+    .bins(x.ticks(20))
+    (values);
 
     var y = d3.scale.linear()
-        .domain([0, d3.max(data, function(d) {
-            return d.y;
-        })])
-        .range([height, 0]);
+    .domain([0, d3.max(data, function(d) {
+        return d.y;
+    })])
+    .range([height, 0]);
 
     var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("bottom");
+    .scale(x)
+    .orient("bottom");
 
     var svg = d3.select("body").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var bar = svg.selectAll(".bar")
-        .data(data)
-        .enter().append("g")
-        .attr("class", "bar")
-        .attr("transform", function(d) {
-            return "translate(" + x(d.x) + "," + y(d.y) + ")";
-        });
+    .data(data)
+    .enter().append("g")
+    .attr("class", "bar")
+    .attr("transform", function(d) {
+        return "translate(" + x(d.x) + "," + y(d.y) + ")";
+    });
 
     bar.append("rect")
-        .attr("x", 1)
-        .attr("width", x(data[0].dx) - 1)
-        .attr("height", function(d) {
-            return height - y(d.y);
-        });
+    .attr("x", 1)
+    .attr("width", x(data[0].dx) - 1)
+    .attr("height", function(d) {
+        return height - y(d.y);
+    });
 
     bar.append("text")
-        .attr("dy", ".75em")
-        .attr("y", 6)
-        .attr("x", x(data[0].dx) / 2)
-        .attr("text-anchor", "middle")
-        .text(function(d) {
-            return formatCount(d.y);
-        });
+    .attr("dy", ".75em")
+    .attr("y", 6)
+    .attr("x", x(data[0].dx) / 2)
+    .attr("text-anchor", "middle")
+    .text(function(d) {
+        return formatCount(d.y);
+    });
 
     svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
     </script>
 </body>
 <template name="task">
@@ -840,9 +702,11 @@
         <span class="text"><strong>{{username}}</strong> - {{text}}</span>
     </li>
 </template>
-
-
 <template name="tweet">
-   <input type="checkbox" checked="{{checked}}" class="tweet-checked" />
-   {{tweetJson}}
+    <input type="checkbox" checked="{{checked}}" class="tweet-checked" />
+    <!-- {{tweetJson.data.location}} -->
+    {{#each tweetJson}} {{#each data}} {{location.latitude}}; {{location.longitude}}; {{/each}} {{/each}}
+</template>
+<template name="googleMap">
+    <div class="map-canvas" style="width: 100%; height: 100%"></div>
 </template>
