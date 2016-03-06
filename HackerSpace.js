@@ -7,8 +7,8 @@ if (Meteor.isServer) {
     Meteor.publish("tasks", function() {
         return Tasks.find({
             $or: [
-                { private: { $ne: true } },
-                { owner: this.userId }
+            { private: { $ne: true } },
+            { owner: this.userId }
             ]
 
         });
@@ -31,103 +31,103 @@ if (Meteor.isClient) {
     Template.body.onRendered(function() {
 
 
-        var routes = [{
-            origin: new google.maps.LatLng(42.3607764, -71.0878372),
-            destination: new google.maps.LatLng(42.35511, -71.06558)
-        }, {
-            origin: new google.maps.LatLng(42.35511, -71.06558),
-            destination: new google.maps.LatLng(42.3587, -71.05749)
-        }, {
-            origin: new google.maps.LatLng(42.3587, -71.05749),
-            destination: new google.maps.LatLng(42.3601, -71.05476)
-        }, {
-            origin: new google.maps.LatLng(42.3601, -71.05476),
-            destination: new google.maps.LatLng(42.37397, -71.05542)
-        }, {
-            origin: new google.maps.LatLng(42.37397, -71.05542),
-            destination: new google.maps.LatLng(
-                42.3607764, -71.0878372)
-        }];
+     routes = [{
+        origin: new google.maps.LatLng(42.3607764, -71.0878372),
+        destination: new google.maps.LatLng(42.35511, -71.06558)
+    }, {
+        origin: new google.maps.LatLng(42.35511, -71.06558),
+        destination: new google.maps.LatLng(42.3587, -71.05749)
+    }, {
+        origin: new google.maps.LatLng(42.3587, -71.05749),
+        destination: new google.maps.LatLng(42.3601, -71.05476)
+    }, {
+        origin: new google.maps.LatLng(42.3601, -71.05476),
+        destination: new google.maps.LatLng(42.37397, -71.05542)
+    }, {
+        origin: new google.maps.LatLng(42.37397, -71.05542),
+        destination: new google.maps.LatLng(
+            42.3607764, -71.0878372)
+    }];
 
 
 
-        var routes1 = [{
-            origin: new google.maps.LatLng(42.36069, -71.08751),
-            destination: new google.maps.LatLng(42.37334, -71.11891)
-        }, {
-            origin: new google.maps.LatLng(42.37334, -71.11891),
-            destination: new google.maps.LatLng(42.3709, -71.12323)
-        }, {
-            origin: new google.maps.LatLng(42.3709, -71.12323),
-            destination: new google.maps.LatLng(42.37695, -71.12638)
-        }, {
-            origin: new google.maps.LatLng(42.37695, -71.12638),
-            destination: new google.maps.LatLng(42.37486, -71.14242)
-        }, {
-            origin: new google.maps.LatLng(42.37486, -71.14242),
-            destination: new google.maps.LatLng(42.37341, -71.13112)
-        }, {
-            origin: new google.maps.LatLng(42.37341, -71.13112),
-            destination: new google.maps.LatLng(42.37348, -71.11908)
-        }];
+    var routes1 = [{
+        origin: new google.maps.LatLng(42.36069, -71.08751),
+        destination: new google.maps.LatLng(42.37334, -71.11891)
+    }, {
+        origin: new google.maps.LatLng(42.37334, -71.11891),
+        destination: new google.maps.LatLng(42.3709, -71.12323)
+    }, {
+        origin: new google.maps.LatLng(42.3709, -71.12323),
+        destination: new google.maps.LatLng(42.37695, -71.12638)
+    }, {
+        origin: new google.maps.LatLng(42.37695, -71.12638),
+        destination: new google.maps.LatLng(42.37486, -71.14242)
+    }, {
+        origin: new google.maps.LatLng(42.37486, -71.14242),
+        destination: new google.maps.LatLng(42.37341, -71.13112)
+    }, {
+        origin: new google.maps.LatLng(42.37341, -71.13112),
+        destination: new google.maps.LatLng(42.37348, -71.11908)
+    }];
 
 
-        var routes2 = [{
-                origin: new google.maps.LatLng(42.3607764, -71.0878372),
-                destination: new google.maps.LatLng(42.342464, -71.083617)
-            }, {
-                origin: new google.maps.LatLng(42.342464, -71.083617),
-                destination: new google.maps.LatLng(42.30065, -71.11387)
-            },
+    var routes2 = [{
+        origin: new google.maps.LatLng(42.3607764, -71.0878372),
+        destination: new google.maps.LatLng(42.342464, -71.083617)
+    }, {
+        origin: new google.maps.LatLng(42.342464, -71.083617),
+        destination: new google.maps.LatLng(42.30065, -71.11387)
+    },
 
-            {
-                origin: new google.maps.LatLng(42.30065, -71.11387),
-                destination: new google.maps.LatLng(42.32934, -71.09578)
-            }, {
-                origin: new google.maps.LatLng(42.31463, -71.10538),
-                destination: new google.maps.LatLng(42.32282, -71.10102)
-            }, {
-                origin: new google.maps.LatLng(42.30628, -71.10944),
-                destination: new google.maps.LatLng(42.31463, -71.10538)
-            }, {
-                origin: new google.maps.LatLng(42.30065, -71.11387),
-                destination: new google.maps.LatLng(42.30628, -71.10944)
-            }
-        ];
+    {
+        origin: new google.maps.LatLng(42.30065, -71.11387),
+        destination: new google.maps.LatLng(42.32934, -71.09578)
+    }, {
+        origin: new google.maps.LatLng(42.31463, -71.10538),
+        destination: new google.maps.LatLng(42.32282, -71.10102)
+    }, {
+        origin: new google.maps.LatLng(42.30628, -71.10944),
+        destination: new google.maps.LatLng(42.31463, -71.10538)
+    }, {
+        origin: new google.maps.LatLng(42.30065, -71.11387),
+        destination: new google.maps.LatLng(42.30628, -71.10944)
+    }
+    ];
 
-        var routes3 = [{
-            origin: new google.maps.LatLng(42.3607764, -71.0878372),
-            destination: new google.maps.LatLng(44.92131, -93.21405)
-        }, {
-            origin: new google.maps.LatLng(44.92131, -93.21405),
-            destination: new google.maps.LatLng(46.87894, -110.36282)
-        }, {
-            origin: new google.maps.LatLng(46.87894, -110.36282),
-            destination: new google.maps.LatLng(42.19465, -122.70926)
-        }, {
-            origin: new google.maps.LatLng(42.19465, -122.70926),
-            destination: new google.maps.LatLng(34.86973, -111.76097)
-        }, {
-            origin: new google.maps.LatLng(34.86973, -111.76097),
-            destination: new google.maps.LatLng(37.23881, -76.50964)
-        }, {
-            origin: new google.maps.LatLng(37.23881, -76.50964),
-            destination: new google.maps.LatLng(42.3607764, -71.0878372)
-        }];
+    var routes3 = [{
+        origin: new google.maps.LatLng(42.3607764, -71.0878372),
+        destination: new google.maps.LatLng(44.92131, -93.21405)
+    }, {
+        origin: new google.maps.LatLng(44.92131, -93.21405),
+        destination: new google.maps.LatLng(46.87894, -110.36282)
+    }, {
+        origin: new google.maps.LatLng(46.87894, -110.36282),
+        destination: new google.maps.LatLng(42.19465, -122.70926)
+    }, {
+        origin: new google.maps.LatLng(42.19465, -122.70926),
+        destination: new google.maps.LatLng(34.86973, -111.76097)
+    }, {
+        origin: new google.maps.LatLng(34.86973, -111.76097),
+        destination: new google.maps.LatLng(37.23881, -76.50964)
+    }, {
+        origin: new google.maps.LatLng(37.23881, -76.50964),
+        destination: new google.maps.LatLng(42.3607764, -71.0878372)
+    }];
 
-        var routesArray = [routes, routes1, routes2];
-        var rendererOptions = {
-            preserveViewport: true
+    var routesArray = [routes, routes1, routes2];
+    rendererOptions = {
+        preserveViewport: true
                 // suppressMarkers:true,
                 // routeIndex:i
-        };
+            };
 
-        $(function() {
+            $(function() {
 
-        });
+            });
 
-        var directionsDisplay;
-        var directionsService = new google.maps.DirectionsService();
+            var directionsDisplay;
+            var directionsService = new google.maps.DirectionsService();
         // var map;
         var startPoint = new google.maps.LatLng(42.36069, -71.08751);
         var endPoint = new google.maps.LatLng(42.36069, -71.08751);
@@ -255,19 +255,19 @@ if (Meteor.isClient) {
                 //         searchTerm(val) 
                 //     }
                 // });
-            }
+}
 
-            function searchTerm(term) {
-                alert("I AM SEARCHING FOR: " + term)
+function searchTerm(term) {
+    alert("I AM SEARCHING FOR: " + term)
                     // TODO: Search the term in the list and change the map display
-            }
+                }
 
-            function addMarker(place, myLatLng, markcircle) {
-                var marker = new google.maps.Marker({
-                    position: myLatLng,
-                    title: place,
-                    map: map
-                });
+                function addMarker(place, myLatLng, markcircle) {
+                    var marker = new google.maps.Marker({
+                        position: myLatLng,
+                        title: place,
+                        map: map
+                    });
                 // marker.setIcon(mcircle1f);
                 marker.setIcon(markcircle);
 
@@ -287,13 +287,13 @@ if (Meteor.isClient) {
             google.maps.event.addDomListener(window, 'load', initialize);
         });
 
-    });
+});
 
 
 
-    Template.body.helpers({
-        tasks: function() {
-            if (Session.get("hideCompleted")) {
+Template.body.helpers({
+    tasks: function() {
+        if (Session.get("hideCompleted")) {
                 // If hide completed is checked, filter tasks
                 return Tasks.find({ checked: { $ne: true } }, { sort: { createdAt: -1 } });
             } else {
@@ -310,8 +310,8 @@ if (Meteor.isClient) {
         }
     });
 
-    Template.body.events({
-        "submit .new-task": function(event) {
+Template.body.events({
+    "submit .new-task": function(event) {
             // Prevent default browser form submit
             console.log(event);
             event.preventDefault();
@@ -339,24 +339,24 @@ if (Meteor.isClient) {
 
 
 
-    Template.body.helpers({
-        initMap: function() {
+Template.body.helpers({
+    initMap: function() {
 
 
 
-        }
-    })
+    }
+})
 
-    Template.task.helpers({
-        isOwner: function() {
+Template.task.helpers({
+    isOwner: function() {
             // return this.owner === Meteor.userId();
             return true;
         }
     });
 
-    Template.tweet.helpers({
-        tweetJson: function() {
-            var tweet1 = Tweets.find().fetch();
+Template.tweet.helpers({
+    tweetJson: function() {
+        var tweet1 = Tweets.find().fetch();
             // console.log(JSON.stringify(tweet1));
 
 
@@ -366,8 +366,8 @@ if (Meteor.isClient) {
 
 
 
-    Template.task.events({
-        "click .toggle-checked": function() {
+Template.task.events({
+    "click .toggle-checked": function() {
             // Set the checked property to the opposite of its current value
             Meteor.call("setChecked", this._id, !this.checked);
         },
@@ -380,18 +380,22 @@ if (Meteor.isClient) {
     });
 
 
-    Template.tweet.events({
-        'click .tweet-checked': function() {
-            Meteor.call("findTweets", this._id);
-        }
-    });
+Template.tweet.events({
+    'click .tweet-checked': function() {
+        Meteor.call("findTweets", this._id);
+    },
+
+    'click .test-router': function(){
+        Meteor.call("renderDirection",this._id);
+    }
+});
 
 
 
 
-    Accounts.ui.config({
-        passwordSignupFields: "USERNAME_ONLY"
-    });
+Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+});
 
 
 }
@@ -444,7 +448,47 @@ Meteor.methods({
         // var tweet= Tweets.find({},{"data.caption.from.full_name":1,"data.caption.from.profile_picture":1,"data.caption.text":1,"data.images.low_resolution.url":1,"data.images.low_resolution.height":1,"data.images.low_resolution.width":1,"data.link":1,"data.location.name":1,"data.location.latitude":1,"data.location.longitude":1,"data.tags":1});
         var tweet = Tweets.find({});
         console.log(tweet);
+    },
+
+
+    renderDirection: function () {
+
+
+
+
+
+
+        var directionsService = new google.maps.DirectionsService();
+        var i=0;
+        routes.forEach(function(route) {
+            // console.log('Here J is: '+j);
+            console.log(JSON.stringify(route));
+            var request = {
+                origin: route.origin,
+                destination: route.destination,
+                travelMode: google.maps.TravelMode.WALKING
+            };
+            var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+            directionsDisplay.setMap(map);
+
+            directionsService.route(request, function(result, status) {
+                console.log(result);
+
+                if (status == google.maps.DirectionsStatus.OK) {
+                    setTimeout(function() {
+
+                        directionsDisplay.setDirections(result);
+
+                    }, '1000');
+
+                }
+            });
+        });
     }
+
+
+
 
 });
 

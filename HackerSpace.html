@@ -343,108 +343,6 @@
     }];
 
 
-    // var styles = [{
-    //     "featureType": "all",
-    //     "elementType": "labels.text.fill",
-    //     "stylers": [{
-    //         "color": "#fffff"
-    //     }, {
-    //         "opacity": "0.4"
-    //     }]
-    // }, {
-    //     "featureType": "all",
-    //     "elementType": "labels.text.stroke",
-    //     "stylers": [{
-    //         "color": "#000000"
-    //     }, {
-    //         "lightness": 13
-    //     }]
-    // }, {
-    //     "featureType": "administrative",
-    //     "elementType": "geometry.fill",
-    //     "stylers": [{
-    //         "color": "#000000"
-    //     }, {
-    //         "opacity": "0.4"
-    //     }]
-    // }, {
-    //     "featureType": "administrative",
-    //     "elementType": "geometry.stroke",
-    //     "stylers": [{
-    //         "color": "#144b53"
-    //     }, {
-    //         "lightness": 14
-    //     }, {
-    //         "weight": 1.4
-    //     }]
-    // }, {
-    //     "featureType": "landscape",
-    //     "elementType": "all",
-    //     "stylers": [{
-    //         "color": "#08304b"
-    //     }]
-    // }, {
-    //     "featureType": "poi",
-    //     "elementType": "geometry",
-    //     "stylers": [{
-    //         "visibility": "off"
-    //     }, {
-    //         "lightness": 0
-    //     }]
-    // }, {
-    //     "featureType": "road.highway",
-    //     "elementType": "geometry.fill",
-    //     "stylers": [{
-    //         "color": "#000000"
-    //     }]
-    // }, {
-    //     "featureType": "road.highway",
-    //     "elementType": "geometry.stroke",
-    //     "stylers": [{
-    //         "color": "#0b434f"
-    //     }, {
-    //         "lightness": 25
-    //     }]
-    // }, {
-    //     "featureType": "road.arterial",
-    //     "elementType": "geometry.fill",
-    //     "stylers": [{
-    //         "color": "#000000"
-    //     }]
-    // }, {
-    //     "featureType": "road.arterial",
-    //     "elementType": "geometry.stroke",
-    //     "stylers": [{
-    //         "color": "#0b3d51"
-    //     }, {
-    //         "lightness": 16
-    //     }]
-    // }, {
-    //     "featureType": "road.local",
-    //     "elementType": "geometry",
-    //     "stylers": [{
-    //         "color": "#000000"
-    //     }]
-    // }, {
-    //     "featureType": "transit",
-    //     "elementType": "all",
-    //     "stylers": [{
-    //         "color": "#146474"
-    //     }]
-    // }, {
-    //     "featureType": "water",
-    //     "elementType": "all",
-    //     "stylers": [{
-    //         "color": "#021019"
-    //     }]
-    // }];
-
-
-
-
-
-
-
     var mcircle1f = {
         path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
         fillColor: 'yellow',
@@ -530,8 +428,6 @@
                 }
             });
         });
-
-
     }
 
     function renderDirection2() {
@@ -614,11 +510,12 @@
                 }
             });
         });
-
-
-
     }
     </script>
+
+
+
+
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script>
     // Generate a Bates distribution of 10 random variables.
@@ -706,6 +603,14 @@
     <input type="checkbox" checked="{{checked}}" class="tweet-checked" />
     <!-- {{tweetJson.data.location}} -->
     {{#each tweetJson}} {{#each data}} {{location.latitude}}; {{location.longitude}}; {{/each}} {{/each}}
+    
+    <input type="button" checked="{{checked}}" class="test-router" />
+<button class="test-router">
+    Come!
+</button>
+
+
+
 </template>
 <template name="googleMap">
     <div class="map-canvas" style="width: 100%; height: 100%"></div>
