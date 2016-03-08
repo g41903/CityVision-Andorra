@@ -31,7 +31,7 @@ if (Meteor.isClient) {
     Template.body.onRendered(function() {
 
 
-     routes = [{
+       route = [{
         origin: new google.maps.LatLng(42.3607764, -71.0878372),
         destination: new google.maps.LatLng(42.35511, -71.06558)
     }, {
@@ -49,73 +49,17 @@ if (Meteor.isClient) {
             42.3607764, -71.0878372)
     }];
 
+    routes=[route];
 
 
-    var routes1 = [{
-        origin: new google.maps.LatLng(42.36069, -71.08751),
-        destination: new google.maps.LatLng(42.37334, -71.11891)
-    }, {
-        origin: new google.maps.LatLng(42.37334, -71.11891),
-        destination: new google.maps.LatLng(42.3709, -71.12323)
-    }, {
-        origin: new google.maps.LatLng(42.3709, -71.12323),
-        destination: new google.maps.LatLng(42.37695, -71.12638)
-    }, {
-        origin: new google.maps.LatLng(42.37695, -71.12638),
-        destination: new google.maps.LatLng(42.37486, -71.14242)
-    }, {
-        origin: new google.maps.LatLng(42.37486, -71.14242),
-        destination: new google.maps.LatLng(42.37341, -71.13112)
-    }, {
-        origin: new google.maps.LatLng(42.37341, -71.13112),
-        destination: new google.maps.LatLng(42.37348, -71.11908)
-    }];
+    mcircle1f = {
+        path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+        fillColor: 'yellow',
+        fillOpacity: 1,
+        scale: 2,
+        strokeWeight: 0
+    };
 
-
-    var routes2 = [{
-        origin: new google.maps.LatLng(42.3607764, -71.0878372),
-        destination: new google.maps.LatLng(42.342464, -71.083617)
-    }, {
-        origin: new google.maps.LatLng(42.342464, -71.083617),
-        destination: new google.maps.LatLng(42.30065, -71.11387)
-    },
-
-    {
-        origin: new google.maps.LatLng(42.30065, -71.11387),
-        destination: new google.maps.LatLng(42.32934, -71.09578)
-    }, {
-        origin: new google.maps.LatLng(42.31463, -71.10538),
-        destination: new google.maps.LatLng(42.32282, -71.10102)
-    }, {
-        origin: new google.maps.LatLng(42.30628, -71.10944),
-        destination: new google.maps.LatLng(42.31463, -71.10538)
-    }, {
-        origin: new google.maps.LatLng(42.30065, -71.11387),
-        destination: new google.maps.LatLng(42.30628, -71.10944)
-    }
-    ];
-
-    var routes3 = [{
-        origin: new google.maps.LatLng(42.3607764, -71.0878372),
-        destination: new google.maps.LatLng(44.92131, -93.21405)
-    }, {
-        origin: new google.maps.LatLng(44.92131, -93.21405),
-        destination: new google.maps.LatLng(46.87894, -110.36282)
-    }, {
-        origin: new google.maps.LatLng(46.87894, -110.36282),
-        destination: new google.maps.LatLng(42.19465, -122.70926)
-    }, {
-        origin: new google.maps.LatLng(42.19465, -122.70926),
-        destination: new google.maps.LatLng(34.86973, -111.76097)
-    }, {
-        origin: new google.maps.LatLng(34.86973, -111.76097),
-        destination: new google.maps.LatLng(37.23881, -76.50964)
-    }, {
-        origin: new google.maps.LatLng(37.23881, -76.50964),
-        destination: new google.maps.LatLng(42.3607764, -71.0878372)
-    }];
-
-    var routesArray = [routes, routes1, routes2];
     rendererOptions = {
         preserveViewport: true
                 // suppressMarkers:true,
@@ -126,17 +70,11 @@ if (Meteor.isClient) {
 
             });
 
-            var directionsDisplay;
-            var directionsService = new google.maps.DirectionsService();
+            // var directionsDisplay;
+            // var directionsService = new google.maps.DirectionsService();
         // var map;
         var startPoint = new google.maps.LatLng(42.36069, -71.08751);
         var endPoint = new google.maps.LatLng(42.36069, -71.08751);
-
-
-
-
-
-
 
 
 
@@ -149,9 +87,16 @@ if (Meteor.isClient) {
                     center: latlng
                 }
                 map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-                infowindow = new google.maps.InfoWindow();
-                addMarkers();
+                
+                // addMarkers();
                 fetchWordData();
+
+
+
+                infowindow = new google.maps.InfoWindow({
+                    maxWidth:150
+                });
+
 
                 var infowindowMark1 = new google.maps.InfoWindow({
                     content: "Here's Andorra lavella"
@@ -169,75 +114,9 @@ if (Meteor.isClient) {
                 infowindowMark1.open(map, marker1);
 
 
-                var infowindowMark2 = new google.maps.InfoWindow({
-                    content: "Scenic route 5km 30min"
-                });
-
-
-                var marker2 = new google.maps.Marker({
-                    position: new google.maps.LatLng(42.380994, -71.118972),
-                    map: map,
-                    title: 'Hello World!'
-                });
-                google.maps.event.addListener(marker2, 'click', function() {
-                    infowindowMark2.open(map, marker2);
-                });
-                // infowindowMark2.open(map,marker2);
-
-
-
-
-
-                var infowindowMark3 = new google.maps.InfoWindow({
-                    content: "Midium Challenge 15km 90min"
-                });
-                var marker3 = new google.maps.Marker({
-                    position: new google.maps.LatLng(42.374210, -71.070220),
-                    map: map,
-                    title: 'Hello World!'
-                });
-                google.maps.event.addListener(marker3, 'click', function() {
-                    infowindowMark3.open(map, marker3);
-                });
-                // infowindowMark3.open(map,marker3);
-
-
-
-
-                var infowindowMark4 = new google.maps.InfoWindow({
-                    content: "Challenging route 28km 190min"
-                });
-                var marker4 = new google.maps.Marker({
-                    position: new google.maps.LatLng(42.3002287, -71.1114684),
-                    map: map,
-                    title: 'Hello World!'
-                });
-                google.maps.event.addListener(marker4, 'click', function() {
-                    infowindowMark4.open(map, marker4);
-                });
-                var routesArray = [routes, routes1, routes2];
 
             }
 
-
-
-
-
-
-            function addMarkers() {
-                for (marker in markers) {
-                    addMarker(marker, markers[marker], mcircle1f)
-                }
-
-                for (marker2 in markers2) {
-                    addMarker(marker2, markers2[marker2], mcircle2f)
-                }
-
-                for (marker3 in markers3) {
-                    addMarker(marker3, markers3[marker3], mcircle3f)
-                }
-
-            }
 
             function fetchWordData() {
                 // TODO: read in the list of words and their counts associated with the word
@@ -262,30 +141,8 @@ function searchTerm(term) {
                     // TODO: Search the term in the list and change the map display
                 }
 
-                function addMarker(place, myLatLng, markcircle) {
-                    var marker = new google.maps.Marker({
-                        position: myLatLng,
-                        title: place,
-                        map: map
-                    });
-                // marker.setIcon(mcircle1f);
-                marker.setIcon(markcircle);
-
-
-                // This can be changed from 'click' to 'hover' if desired
-                google.maps.event.addListener(marker, 'click', function() {
-                    // TODO: Add more information about each location in the popup window
-
-                    infowindow.setContent("<h3>" + place + "</h3>");
-                    infowindow.open(map, this);
-
-
-
-                });
-            }
-
-            google.maps.event.addDomListener(window, 'load', initialize);
-        });
+                google.maps.event.addDomListener(window, 'load', initialize);
+            });
 
 });
 
@@ -310,42 +167,6 @@ Template.body.helpers({
         }
     });
 
-Template.body.events({
-    "submit .new-task": function(event) {
-            // Prevent default browser form submit
-            console.log(event);
-            event.preventDefault();
-            // Insert a task into the collection
-            // Get value from form element
-
-
-            var text = event.target.text.value;
-            Meteor.call("addTask", text);
-
-            // Insert a task into the collection
-            // Tasks.insert({
-            //   text: text,
-            //   createdAt: new Date(),            // current time
-            //   owner: Meteor.userId(),           // _id of logged in user
-            //   username: Meteor.user().username  // username of logged in user
-            // });
-            // Clear form
-            event.target.text.value = "";
-        },
-        "change .hide-completed input": function(event) {
-            Session.set("hideCompleted", event.target.checked);
-        }
-    });
-
-
-
-Template.body.helpers({
-    initMap: function() {
-
-
-
-    }
-})
 
 Template.task.helpers({
     isOwner: function() {
@@ -354,16 +175,81 @@ Template.task.helpers({
         }
     });
 
+
+
+
 Template.tweet.helpers({
+
+
     tweetJson: function() {
-        var tweet1 = Tweets.find().fetch();
-            // console.log(JSON.stringify(tweet1));
 
 
-            return tweet1;
-        }
-    });
+        var social_marker_locations=[];
 
+        // var subs= Meteor.subscribe('tweets');
+
+        Meteor.autorun(function(){
+
+            var subs= Meteor.subscribe('tweets');            
+
+            if(subs.ready()){
+                tweet1 = Tweets.find().fetch();
+                // console.log(tweet1[0]['data'][0]['location']['latitude']);
+                for(var obj_key in tweet1){
+                    // console.log(tweet1[obj_key]);
+                    //obj_val is object intex number, don't add quotation 'instagram_record_key', it will become string.
+                    var obj_val=tweet1[obj_key]
+                    for(var instagram_record_key in obj_val['data']){
+                        // console.info(obj_val['data']);
+                        //instagram_record_key is object intex number, don't add quotation 'instagram_record_key', it will become string.
+                        
+                        var instagram_record_val=obj_val['data'][instagram_record_key];
+                        // console.info(instagram_record_val['location']['latitude']);
+                        // console.info(instagram_record_val['location']['longitude']);
+                        var latitude=instagram_record_val['location']['latitude'];
+                        var longitude=instagram_record_val['location']['longitude'];
+                        var tags=instagram_record_val['tags'];
+                        // "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12328427_249602455371344_1712327594_n.jpg?ig_cache_key=MTE5MDUyMjQ4ODgxMTk4MzUxNw%3D%3D.2.l"
+                        var myContent=instagram_record_val['images']['low_resolution']['url'];
+                        // var myContent='Andorra';
+                        social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
+                        // social_marker_locations.push(['Ernie',latitude,longitude,myContent]);
+
+                    }
+                }
+                Meteor.call("addMarkers",social_marker_locations);
+            }
+
+
+
+        });
+
+
+}
+});
+
+Template.tweet.onCreated(function(){
+
+
+
+
+}
+
+
+);
+
+
+
+
+
+
+Template.body.events({
+    'click .mark-tweets': function () {
+        // tweet1
+
+
+    }
+});
 
 
 Template.task.events({
@@ -386,7 +272,7 @@ Template.tweet.events({
     },
 
     'click .test-router': function(){
-        Meteor.call("renderDirection",this._id);
+        Meteor.call("renderDirection",routes);
     }
 });
 
@@ -451,12 +337,7 @@ Meteor.methods({
     },
 
 
-    renderDirection: function () {
-
-
-
-
-
+    renderDirection: function (routes) {
 
         var directionsService = new google.maps.DirectionsService();
         var i=0;
@@ -485,12 +366,48 @@ Meteor.methods({
                 }
             });
         });
-    }
+    },
+    addMarkers: function (markers) {
+        for (var marker in markers) {
+            var marker_val=markers[marker];
+            Meteor.call('addMarker',marker_val[0], marker_val[1], marker_val[2],marker_val[3]);
+        }
+    },
 
+    // var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+    addMarker: function (place, latitude, longitude,myContent) {
 
+        // var instagram_img = {
+        //     path: myContent,
+        //     height:150,
+        //     width:150
+        // };
+      //   var instagram_img = {
+      //     url: myContent,
+      //     size: new google.maps.Size(71, 71),
+      //     origin: new google.maps.Point(0, 0),
+      //     anchor: new google.maps.Point(17, 34),
+      //     scaledSize: new google.maps.Size(25, 25)
+      // };
 
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(latitude,longitude),
+        title: place,
+        map: map,
+            icon:mcircle1f
+            // icon:instagram_img
+        });
+                // This can be changed from 'click' to 'hover' if desired
+                google.maps.event.addListener(marker, 'click', function() {
+                    // TODO: Add more information about each location in the popup window
+                    // infowindow.setContent("<h3>" + place + "</h3>");
 
-});
+                    infowindow.setContent('<p><img src=' + myContent + 'height="150" width="150"></p>'+"<h3>" + place + "</h3>");
+                    infowindow.open(map, this);
+                });
+            }
+
+        });
 
 
 
