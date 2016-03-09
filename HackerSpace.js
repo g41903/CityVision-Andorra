@@ -31,7 +31,7 @@ if (Meteor.isClient) {
     Template.body.onRendered(function() {
 
 
-       route = [{
+     route = [{
         origin: new google.maps.LatLng(42.3607764, -71.0878372),
         destination: new google.maps.LatLng(42.35511, -71.06558)
     }, {
@@ -163,9 +163,46 @@ Template.body.helpers({
         },
         incompleteCount: function() {
             return Tasks.find({ checked: { $ne: true } }).count();
+        },
+        getTweets:function(){
 
-        }
-    });
+            var tweet_details=[];
+            Meteor.autorun(function(){
+                var subs=Meteor.subscribe('tweets');
+                if(subs.ready()){
+                   tweet1 = Tweets.find().fetch();
+                   for(var document_key in tweet1){
+                        document_val=tweet1[document_key];
+                        for(var record_key in document_val){
+                            record_val=document_val[record_key];
+                            img_date=record_val['img_date'][0];
+                            img_url=record_val['img_url'];
+                            img_tags=record_val['img_tags'];
+                            detail_tags=record_val['detail_tags'];
+                            img_latitude=record_val['img_latitude'][0];
+                            img_longitude=record_val['img_longitude'][0];
+                            img_result=record_val['img_result'];
+                            text_result=record_val['text_result'];
+                            created_time=record_val['created_time'];
+                            updated_time=record_val['updated_time'];
+
+                            tweet_details.push([img_tags,img_latitude,img_longitude,img_date])
+// social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
+
+
+                        }
+                    }
+            Meteor.call("addMarkers",tweet_details);
+
+}
+}
+)
+
+}
+
+
+
+});
 
 
 Template.task.helpers({
@@ -174,6 +211,8 @@ Template.task.helpers({
             return true;
         }
     });
+
+
 
 
 
@@ -223,9 +262,12 @@ Template.tweet.helpers({
 
 
         });
-
-
 }
+
+
+
+
+
 });
 
 Template.tweet.onCreated(function(){
@@ -394,7 +436,7 @@ Meteor.methods({
         position: new google.maps.LatLng(latitude,longitude),
         title: place,
         map: map,
-            icon:mcircle1f
+        icon:mcircle1f
             // icon:instagram_img
         });
                 // This can be changed from 'click' to 'hover' if desired
