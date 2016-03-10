@@ -2,6 +2,9 @@ Tasks = new Mongo.Collection("tasks");
 
 Tweets = new Mongo.Collection("tweets");
 
+Tweets3 = new Mongo.Collection("tweets3");
+
+
 if (Meteor.isServer) {
     // This code only runs on the server
     Meteor.publish("tasks", function() {
@@ -20,6 +23,12 @@ if (Meteor.isServer) {
         // return Tweets.find({}, { fields: { "data.link": 1 } });
         return Tweets.find({}, { "data.caption.from.full_name": 1, "data.caption.from.profile_picture": 1, "data.caption.text": 1, "data.images.low_resolution.url": 1, "data.images.low_resolution.height": 1, "data.images.low_resolution.width": 1, "data.link": 1, "data.location.name": 1, "data.location.latitude": 1, "data.location.longitude": 1, "data.tags": 1 });
     });
+
+    Meteor.publish("tweets3", function() {
+        // return Tweets.find({"data.link":"https://www.instagram.com/p/BCFlf2FsaHm/"}).fetch();
+        // return Tweets.find({}, { fields: { "data.link": 1 } });
+        return Tweets3.find({}, { "data.caption.from.full_name": 1, "data.caption.from.profile_picture": 1, "data.caption.text": 1, "data.images.low_resolution.url": 1, "data.images.low_resolution.height": 1, "data.images.low_resolution.width": 1, "data.link": 1, "data.location.name": 1, "data.location.latitude": 1, "data.location.longitude": 1, "data.tags": 1 });
+    });
 }
 
 if (Meteor.isClient) {
@@ -27,6 +36,8 @@ if (Meteor.isClient) {
     Meteor.subscribe("tasks");
 
     Meteor.subscribe("tweets");
+
+    Meteor.subscribe("tweets3");
 
     Template.body.onRendered(function() {
 
@@ -198,7 +209,10 @@ Template.body.helpers({
 }
 )
 
-}
+},
+
+
+
 
 
 
@@ -262,6 +276,42 @@ Template.tweet.helpers({
 
 
         });
+},
+
+        getTweets3: function(){
+
+            var tweet_details=[];
+            Meteor.autorun(function(){
+                var subs=Meteor.subscribe('tweets3');
+                if(subs.ready()){
+                   tweet3 = Tweets3.find().fetch();
+                   for(var document_key in tweet3){
+                            record_val=tweet3[document_key];
+                        // for(var record_key in document_val){
+                            // record_val=document_val[record_key];
+                            img_date=record_val['img_date'];
+                            img_url=record_val['img_url'][0];
+                            img_tags=record_val['img_tags'];
+                            detail_tags=record_val['detail_tags'];
+                            img_latitude=record_val['img_latitude'][0];
+                            img_longitude=record_val['img_longitude'][0];
+                            img_result=record_val['img_result'];
+                            text_result=record_val['text_result'];
+                            created_time=record_val['created_time'];
+                            updated_time=record_val['updated_time'];
+                            tweet_details.push([img_tags,img_latitude,img_longitude,img_date]);
+// social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
+
+
+                        // }
+                    }
+            console.log(JSON.stringify(tweet_details));
+            Meteor.call("addMarkers",tweet_details);
+
+}
+}
+)
+
 }
 
 

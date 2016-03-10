@@ -80,9 +80,8 @@
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-    // <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&callback=initMap"
-    // async defer></script>    
+    <!-- // <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&callback=initMap" async defer></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="HackerSpace.js"></script>
     <script type="text/javascript">
@@ -618,8 +617,9 @@
     <!-- {{tweetJson.data.location}} -->
     <!--     {{#each tweetJson}} {{#each data}} {{location.latitude}}; {{location.longitude}}; {{/each}} {{/each}} -->
 
-    {{tweetJson}}
+    <!-- {{tweetJson}} -->
     <!-- {{getTweets}} -->
+    {{getTweets3}}
     <input type="button" checked="{{checked}}" class="test-router" />
     <button class="test-router">
         Come!
