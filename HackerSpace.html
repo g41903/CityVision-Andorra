@@ -2,85 +2,87 @@
     <title>Todo List</title>
     <title>Hacker_Space</title>
     <style>
-    body {
-        font: 10px sans-serif;
-    }
-    
-    .bar rect {
-        fill: steelblue;
-        shape-rendering: crispEdges;
-    }
-    
-    .bar text {
-        fill: #fff;
-    }
-    
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-    }
+        body {
+            font: 10px sans-serif;
+        }
+
+        .bar rect {
+            fill: steelblue;
+            shape-rendering: crispEdges;
+        }
+
+        .bar text {
+            fill: #fff;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
     </style>
     <style>
-    html,
-    body,
-    #map-canvas {
-        height: 100%;
-        padding: 0px;
-        margin-left: 10px;
-        margin-right: 20px;
-        margin-top: 10px;
-        background: #0F0F0F;
-    }
-    
-    label {
-        color: white;
-    }
-    
-    #map-canvas {
-        vertical-align: bottom;
-        width: 100%!important;
-        height: 600px!imortant;
-        display: inline-block;
-        top: 0px;
-        overflow: scroll!important;
-        color: black;
-    }
-    
-    #map {
-        color: white;
-        display: inline-block;
-        top: 0px;
-        width: 100%!important;
-        height: 600px!important;
-        margin-bottom: 10px;
-    }
-    
-    polyline {
-        opacity: .3;
-        stroke: white;
-        stroke-width: 2px;
-        fill: none;
-    }
-    
-    .button {
-        background-color: #4CAF50;
-        /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-    }
+        html,
+        body,
+        #map-canvas {
+            height: 100%;
+            padding: 0px;
+            margin-left: 10px;
+            margin-right: 20px;
+            margin-top: 10px;
+            background: #0F0F0F;
+        }
+
+        label {
+            color: white;
+        }
+
+        #map-canvas {
+            vertical-align: bottom;
+            width: 100%!important;
+            height: 600px!imortant;
+            display: inline-block;
+            top: 0px;
+            overflow: scroll!important;
+            color: black;
+        }
+
+        #map {
+            color: white;
+            display: inline-block;
+            top: 0px;
+            width: 100%!important;
+            height: 600px!important;
+            margin-bottom: 10px;
+        }
+
+        polyline {
+            opacity: .3;
+            stroke: white;
+            stroke-width: 2px;
+            fill: none;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
     </style>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    // <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&callback=initMap"
+    // async defer></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="HackerSpace.js"></script>
     <script type="text/javascript">
@@ -366,8 +368,8 @@
         scale: 2,
         strokeWeight: 0
     };
-    </script>
-    <style type="text/css">
+</script>
+<style type="text/css">
     html,
     body {
         height: 100%;
@@ -378,7 +380,7 @@
     #map {
         height: 100%;
     }
-    </style>
+</style>
 </head>
 
 <body>
@@ -407,9 +409,9 @@
     <script type="text/javascript">
 
 
-    function renderDirection() {
+        function renderDirection() {
 
-        var directionsService = new google.maps.DirectionsService();
+            var directionsService = new google.maps.DirectionsService();
         // var i=0;
         routes.forEach(function(route) {
             // console.log('Here J is: '+j);
@@ -519,13 +521,13 @@
             });
         });
     }
-    </script>
+</script>
 
 
 
 
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
     // Generate a Bates distribution of 10 random variables.
     var values = d3.range(1000).map(d3.random.bates(10));
 
@@ -594,7 +596,7 @@
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis);
-    </script>
+</script>
 </body>
 <template name="task">
     <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
@@ -616,8 +618,8 @@
     <!-- {{tweetJson.data.location}} -->
     <!--     {{#each tweetJson}} {{#each data}} {{location.latitude}}; {{location.longitude}}; {{/each}} {{/each}} -->
 
-    <!-- {{tweetJson}} -->
-    {{getTweets}}
+    {{tweetJson}}
+    <!-- {{getTweets}} -->
     <input type="button" checked="{{checked}}" class="test-router" />
     <button class="test-router">
         Come!
