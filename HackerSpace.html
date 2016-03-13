@@ -2,126 +2,126 @@
     <title>Todo List</title>
     <title>Hacker_Space</title>
     <style>
-        body {
-            font: 10px sans-serif;
-        }
-
-        .bar rect {
-            fill: steelblue;
-            shape-rendering: crispEdges;
-        }
-
-        .bar text {
-            fill: #fff;
-        }
-
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #000;
-            shape-rendering: crispEdges;
-        }
+    body {
+        font: 10px sans-serif;
+    }
+    
+    .bar rect {
+        fill: steelblue;
+        shape-rendering: crispEdges;
+    }
+    
+    .bar text {
+        fill: #fff;
+    }
+    
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
     </style>
     <style>
-        html,
-        body,
-        #map-canvas {
-            height: 100%;
-            padding: 0px;
-            margin-left: 10px;
-            margin-right: 20px;
-            margin-top: 10px;
-            background: #0F0F0F;
-        }
-
-        label {
-            color: white;
-        }
-
-        #map-canvas {
-            vertical-align: bottom;
-            width: 100%!important;
-            height: 600px!imortant;
-            display: inline-block;
-            top: 0px;
-            overflow: scroll!important;
-            color: black;
-        }
-
-        #map {
-            color: white;
-            display: inline-block;
-            top: 0px;
-            width: 100%!important;
-            height: 600px!important;
-            margin-bottom: 10px;
-        }
-
-        polyline {
-            opacity: .3;
-            stroke: white;
-            stroke-width: 2px;
-            fill: none;
-        }
-
-        .button {
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-        }
+    html,
+    body,
+    #map-canvas {
+        height: 100%;
+        padding: 0px;
+        margin-left: 10px;
+        margin-right: 20px;
+        margin-top: 10px;
+        background: #0F0F0F;
+    }
+    
+    label {
+        color: white;
+    }
+    
+    #map-canvas {
+        vertical-align: bottom;
+        width: 100%!important;
+        height: 600px!imortant;
+        display: inline-block;
+        top: 0px;
+        overflow: scroll!important;
+        color: black;
+    }
+    
+    #map {
+        color: white;
+        display: inline-block;
+        top: 0px;
+        width: 100%!important;
+        height: 600px!important;
+        margin-bottom: 10px;
+    }
+    
+    polyline {
+        opacity: .3;
+        stroke: white;
+        stroke-width: 2px;
+        fill: none;
+    }
+    
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
     </style>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
     <!-- // <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&callback=initMap" async defer></script>    
+    <!-- // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&callback=initMap" async defer></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="HackerSpace.js"></script>
     <script type="text/javascript">
     //global variables 
-    var map;
-    var markers = {
-        // "MIT Media Lab": new google.maps.LatLng(42.3607764,-71.0878372), 
-        "Boston Common": new google.maps.LatLng(42.35511, -71.06558),
-        "Boston Massacre Site": new google.maps.LatLng(42.3587, -71.05749),
-        "Faneuil Hall Marketplace": new google.maps.LatLng(42.3601, -71.05476),
-        "USS Constitution Museum": new google.maps.LatLng(42.37397, -71.05542),
-        "MIT Media Lab": new google.maps.LatLng(42.3607764, -71.0878372)
-    };
+    // var map;
+    // var markers = {
+    //     // "MIT Media Lab": new google.maps.LatLng(42.3607764,-71.0878372), 
+    //     "Boston Common": new google.maps.LatLng(42.35511, -71.06558),
+    //     "Boston Massacre Site": new google.maps.LatLng(42.3587, -71.05749),
+    //     "Faneuil Hall Marketplace": new google.maps.LatLng(42.3601, -71.05476),
+    //     "USS Constitution Museum": new google.maps.LatLng(42.37397, -71.05542),
+    //     "MIT Media Lab": new google.maps.LatLng(42.3607764, -71.0878372)
+    // };
 
 
 
-    var markers2 = {
-        // "MIT Media Lab": new google.maps.LatLng(42.3607764,-71.0878372),
+    // var markers2 = {
+    //     // "MIT Media Lab": new google.maps.LatLng(42.3607764,-71.0878372),
 
-        "Prudential Center": new google.maps.LatLng(42.342464, -71.083617),
-        "Northeastern University": new google.maps.LatLng(42.30065, -71.11387),
-        "Dudley Mansion (Nathaniel Askia House)": new google.maps.LatLng(42.30628, -71.10944),
-        'Jackson Square': new google.maps.LatLng(42.31463, -71.10538),
-        'Centre Street': new google.maps.LatLng(42.32282, -71.10102),
-        'Minton Street': new google.maps.LatLng(42.32934, -71.09578),
-        'Forest Hills Station': new google.maps.LatLng(42.30065, -71.11387)
-    };
+    //     "Prudential Center": new google.maps.LatLng(42.342464, -71.083617),
+    //     "Northeastern University": new google.maps.LatLng(42.30065, -71.11387),
+    //     "Dudley Mansion (Nathaniel Askia House)": new google.maps.LatLng(42.30628, -71.10944),
+    //     'Jackson Square': new google.maps.LatLng(42.31463, -71.10538),
+    //     'Centre Street': new google.maps.LatLng(42.32282, -71.10102),
+    //     'Minton Street': new google.maps.LatLng(42.32934, -71.09578),
+    //     'Forest Hills Station': new google.maps.LatLng(42.30065, -71.11387)
+    // };
 
-    //Wet
+    // //Wet
 
-    var markers3 = {
-        // "MIT Media Lab": new google.maps.LatLng(42.3607764,-71.0878372),
-        "MIT Media Lab": new google.maps.LatLng(42.36069, -71.08751),
-        "Central Square": new google.maps.LatLng(42.365534, -71.103941),
-        "Harvard Square": new google.maps.LatLng(42.37334, -71.11891),
-        "John F. Kennedy Park": new google.maps.LatLng(42.3709, -71.12323),
-        'Longfellow Park': new google.maps.LatLng(42.37695, -71.12638),
-        'Mount Auburn Cemetery': new google.maps.LatLng(42.37486, -71.14242),
-        'Harvard Square': new google.maps.LatLng(42.37341, -71.13112)
-    };
+    // var markers3 = {
+    //     // "MIT Media Lab": new google.maps.LatLng(42.3607764,-71.0878372),
+    //     "MIT Media Lab": new google.maps.LatLng(42.36069, -71.08751),
+    //     "Central Square": new google.maps.LatLng(42.365534, -71.103941),
+    //     "Harvard Square": new google.maps.LatLng(42.37334, -71.11891),
+    //     "John F. Kennedy Park": new google.maps.LatLng(42.3709, -71.12323),
+    //     'Longfellow Park': new google.maps.LatLng(42.37695, -71.12638),
+    //     'Mount Auburn Cemetery': new google.maps.LatLng(42.37486, -71.14242),
+    //     'Harvard Square': new google.maps.LatLng(42.37341, -71.13112)
+    // };
 
 
 
@@ -367,8 +367,8 @@
         scale: 2,
         strokeWeight: 0
     };
-</script>
-<style type="text/css">
+    </script>
+    <style type="text/css">
     html,
     body {
         height: 100%;
@@ -379,7 +379,7 @@
     #map {
         height: 100%;
     }
-</style>
+    </style>
 </head>
 
 <body>
@@ -390,212 +390,269 @@
             <!-- {{> googleMap}} -->
         </div>
         <div id="map-canvas"></div>
-
         <button class="mark-tweets">
             Mark Tweets
         </button>
-
-
-
-
     </div>
     <!--    <div id="directionsPanel" style="float:right;width:30%;height 100%"></div> -->
-<!--     <input type="button" onClick="renderDirection2()" value="Explore Easy!" />
+    <!--     <input type="button" onClick="renderDirection2()" value="Explore Easy!" />
     <input type="button" onClick="renderDirection()" value="Explore Medium!" />
     <input type="button" onClick="renderDirection3()" value="Explore Hard!" />
     <input type="button" onClick="renderDirection4()" value="Explore all!" />
     <input type="button" onClick="clearMarkers()" value="Clear Markers" /> -->
     <script type="text/javascript">
+    //     function renderDirection() {
+
+    //         var directionsService = new google.maps.DirectionsService();
+    //     // var i=0;
+    //     routes.forEach(function(route) {
+    //         // console.log('Here J is: '+j);
+    //         console.log(JSON.stringify(route));
+    //         var request = {
+    //             origin: route.origin,
+    //             destination: route.destination,
+    //             travelMode: google.maps.TravelMode.WALKING
+    //         };
+    //         var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+    //         directionsDisplay.setMap(map);
+
+    //         directionsService.route(request, function(result, status) {
+    //             console.log(result);
+
+    //             if (status == google.maps.DirectionsStatus.OK) {
+    //                 setTimeout(function() {
+
+    //                     directionsDisplay.setDirections(result);
+
+    //                 }, '1000');
+
+    //             }
+    //         });
+    //     });
+    // }
+
+    // function renderDirection2() {
+    //     routes1.forEach(function(route) {
+    //         setTimeout(function() {
+
+    //             // console.log('Here J is: '+j);
+    //             console.log(JSON.stringify(route));
+    //             var request = {
+    //                 origin: route.origin,
+    //                 destination: route.destination,
+    //                 travelMode: google.maps.TravelMode.WALKING
+    //             };
+    //             var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+    //             directionsDisplay.setMap(map);
+
+    //             directionsService.route(request, function(result, status) {
+    //                 console.log(result);
+
+    //                 if (status == google.maps.DirectionsStatus.OK) {
+    //                     directionsDisplay.setDirections(result);
+    //                 }
+    //             });
 
 
-        function renderDirection() {
+    //         }, '1000');
 
-            var directionsService = new google.maps.DirectionsService();
-        // var i=0;
-        routes.forEach(function(route) {
-            // console.log('Here J is: '+j);
-            console.log(JSON.stringify(route));
-            var request = {
-                origin: route.origin,
-                destination: route.destination,
-                travelMode: google.maps.TravelMode.WALKING
-            };
-            var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+    //     });
+    // }
 
-            directionsDisplay.setMap(map);
+    // function renderDirection3() {
+    //     routes2.forEach(function(route) {
+    //         setTimeout(function() {}, '1000');
+    //         // console.log('Here J is: '+j);
+    //         console.log(JSON.stringify(route));
+    //         var request = {
+    //             origin: route.origin,
+    //             destination: route.destination,
+    //             travelMode: google.maps.TravelMode.WALKING
+    //         };
+    //         var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 
-            directionsService.route(request, function(result, status) {
-                console.log(result);
+    //         directionsDisplay.setMap(map);
 
-                if (status == google.maps.DirectionsStatus.OK) {
-                    setTimeout(function() {
+    //         directionsService.route(request, function(result, status) {
+    //             console.log(result);
 
-                        directionsDisplay.setDirections(result);
+    //             if (status == google.maps.DirectionsStatus.OK) {
+    //                 directionsDisplay.setDirections(result);
+    //             }
+    //         });
+    //     });
+    // }
 
-                    }, '1000');
 
-                }
-            });
+    // function renderDirection4() {
+    //     // map.setCenter();
+    //     routes3.forEach(function(route) {
+    //         setTimeout(function() {}, '1000');
+
+    //         // console.log('Here J is: '+j);
+    //         console.log(JSON.stringify(route));
+    //         var request = {
+    //             origin: route.origin,
+    //             destination: route.destination,
+    //             travelMode: google.maps.TravelMode.WALKING
+    //         };
+    //         var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+    //         directionsDisplay.setMap(map);
+
+
+
+    //         directionsService.route(request, function(result, status) {
+    //             console.log(result);
+
+    //             if (status == google.maps.DirectionsStatus.OK) {
+    //                 directionsDisplay.setDirections(result);
+    //             }
+    //         });
+    //     });
+    // }
+    </script>
+    <script type="text/javascript">
+    var map;
+    var infowindow;
+    var mcircle2f = {
+            path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+            fillColor: 'blue',
+            fillOpacity: 1,
+            scale: 2,
+            strokeWeight: 0
+        };
+
+
+    function initMap() {
+        var pyrmont = {
+            lat: 42.5052221,
+            lng: 1.5219545
+        };
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: pyrmont,
+            zoom: 15
         });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+            location: pyrmont,
+            radius: 1000,
+            type: ['store']
+        }, callback);
     }
 
-    function renderDirection2() {
-        routes1.forEach(function(route) {
-            setTimeout(function() {
-
-                // console.log('Here J is: '+j);
-                console.log(JSON.stringify(route));
-                var request = {
-                    origin: route.origin,
-                    destination: route.destination,
-                    travelMode: google.maps.TravelMode.WALKING
-                };
-                var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-
-                directionsDisplay.setMap(map);
-
-                directionsService.route(request, function(result, status) {
-                    console.log(result);
-
-                    if (status == google.maps.DirectionsStatus.OK) {
-                        directionsDisplay.setDirections(result);
-                    }
-                });
-
-
-            }, '1000');
-
-        });
+    function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker(results[i]);
+            }
+        }
     }
 
-    function renderDirection3() {
-        routes2.forEach(function(route) {
-            setTimeout(function() {}, '1000');
-            // console.log('Here J is: '+j);
-            console.log(JSON.stringify(route));
-            var request = {
-                origin: route.origin,
-                destination: route.destination,
-                travelMode: google.maps.TravelMode.WALKING
-            };
-            var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+    function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            icon:mcircle2f
+        });
 
-            directionsDisplay.setMap(map);
-
-            directionsService.route(request, function(result, status) {
-                console.log(result);
-
-                if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(result);
-                }
-            });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
         });
     }
-
-
-    function renderDirection4() {
-        // map.setCenter();
-        routes3.forEach(function(route) {
-            setTimeout(function() {}, '1000');
-
-            // console.log('Here J is: '+j);
-            console.log(JSON.stringify(route));
-            var request = {
-                origin: route.origin,
-                destination: route.destination,
-                travelMode: google.maps.TravelMode.WALKING
-            };
-            var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-
-            directionsDisplay.setMap(map);
-
-
-
-            directionsService.route(request, function(result, status) {
-                console.log(result);
-
-                if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(result);
-                }
-            });
-        });
-    }
-</script>
+    </script>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&libraries=places&callback=initMap" async defer></script>
+    
 
 
 
 
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script>
-    // Generate a Bates distribution of 10 random variables.
-    var values = d3.range(1000).map(d3.random.bates(10));
 
-    // A formatter for counts.
-    var formatCount = d3.format(",.0f");
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    
 
-    var margin = {
-        top: 10,
-        right: 30,
-        bottom: 30,
-        left: 30
-    },
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    <script>
+    // // Generate a Bates distribution of 10 random variables.
+    // var values = d3.range(1000).map(d3.random.bates(10));
 
-    var x = d3.scale.linear()
-    .domain([0, 1])
-    .range([0, width]);
+    // // A formatter for counts.
+    // var formatCount = d3.format(",.0f");
 
-    // Generate a histogram using twenty uniformly-spaced bins.
-    var data = d3.layout.histogram()
-    .bins(x.ticks(20))
-    (values);
+    // var margin = {
+    //     top: 10,
+    //     right: 30,
+    //     bottom: 30,
+    //     left: 30
+    // },
+    // width = 960 - margin.left - margin.right,
+    // height = 500 - margin.top - margin.bottom;
 
-    var y = d3.scale.linear()
-    .domain([0, d3.max(data, function(d) {
-        return d.y;
-    })])
-    .range([height, 0]);
+    // var x = d3.scale.linear()
+    // .domain([0, 1])
+    // .range([0, width]);
 
-    var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+    // // Generate a histogram using twenty uniformly-spaced bins.
+    // var data = d3.layout.histogram()
+    // .bins(x.ticks(20))
+    // (values);
 
-    var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    // var y = d3.scale.linear()
+    // .domain([0, d3.max(data, function(d) {
+    //     return d.y;
+    // })])
+    // .range([height, 0]);
 
-    var bar = svg.selectAll(".bar")
-    .data(data)
-    .enter().append("g")
-    .attr("class", "bar")
-    .attr("transform", function(d) {
-        return "translate(" + x(d.x) + "," + y(d.y) + ")";
-    });
+    // var xAxis = d3.svg.axis()
+    // .scale(x)
+    // .orient("bottom");
 
-    bar.append("rect")
-    .attr("x", 1)
-    .attr("width", x(data[0].dx) - 1)
-    .attr("height", function(d) {
-        return height - y(d.y);
-    });
+    // var svg = d3.select("body").append("svg")
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
+    // .append("g")
+    // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    bar.append("text")
-    .attr("dy", ".75em")
-    .attr("y", 6)
-    .attr("x", x(data[0].dx) / 2)
-    .attr("text-anchor", "middle")
-    .text(function(d) {
-        return formatCount(d.y);
-    });
+    // var bar = svg.selectAll(".bar")
+    // .data(data)
+    // .enter().append("g")
+    // .attr("class", "bar")
+    // .attr("transform", function(d) {
+    //     return "translate(" + x(d.x) + "," + y(d.y) + ")";
+    // });
 
-    svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
-</script>
+    // bar.append("rect")
+    // .attr("x", 1)
+    // .attr("width", x(data[0].dx) - 1)
+    // .attr("height", function(d) {
+    //     return height - y(d.y);
+    // });
+
+    // bar.append("text")
+    // .attr("dy", ".75em")
+    // .attr("y", 6)
+    // .attr("x", x(data[0].dx) / 2)
+    // .attr("text-anchor", "middle")
+    // .text(function(d) {
+    //     return formatCount(d.y);
+    // });
+
+    // svg.append("g")
+    // .attr("class", "x axis")
+    // .attr("transform", "translate(0," + height + ")")
+    // .call(xAxis);
+    </script>
+
+
+
+
 </body>
 <template name="task">
     <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
@@ -608,15 +665,10 @@
         <span class="text"><strong>{{username}}</strong> - {{text}}</span>
     </li>
 </template>
-
-
-
-
 <template name="tweet">
     <input type="checkbox" checked="{{checked}}" class="tweet-checked" />
     <!-- {{tweetJson.data.location}} -->
     <!--     {{#each tweetJson}} {{#each data}} {{location.latitude}}; {{location.longitude}}; {{/each}} {{/each}} -->
-
     <!-- {{tweetJson}} -->
     <!-- {{getTweets}} -->
     {{getTweets3}}
@@ -625,9 +677,6 @@
         Come!
     </button>
 </template>
-
-
-
 <template name="googleMap">
     <div class="map-canvas" style="width: 100%; height: 100%"></div>
 </template>
