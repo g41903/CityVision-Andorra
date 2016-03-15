@@ -1,79 +1,79 @@
 <head>
     <title>Andorra social mining- Ernie Ho</title>
     <style>
-        body {
-            font: 10px sans-serif;
-        }
-        
-        .bar rect {
-            fill: steelblue;
-            shape-rendering: crispEdges;
-        }
-        
-        .bar text {
-            fill: #fff;
-        }
-        
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #000;
-            shape-rendering: crispEdges;
-        }
+    body {
+        font: 10px sans-serif;
+    }
+    
+    .bar rect {
+        fill: steelblue;
+        shape-rendering: crispEdges;
+    }
+    
+    .bar text {
+        fill: #fff;
+    }
+    
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
     </style>
     <style>
-        html,
-        body,
-        #map-canvas {
-            height: 100%;
-            padding: 0px;
-            margin-left: 10px;
-            margin-right: 20px;
-            margin-top: 10px;
-            background: #0F0F0F;
-        }
-        
-        label {
-            color: white;
-        }
-        
-        #map-canvas {
-            vertical-align: bottom;
-            width: 100%!important;
-            height: 600px!imortant;
-            display: inline-block;
-            top: 0px;
-            overflow: scroll!important;
-            color: black;
-        }
-        
-        #map {
-            color: white;
-            display: inline-block;
-            top: 0px;
-            width: 100%!important;
-            height: 600px!important;
-            margin-bottom: 10px;
-        }
-        
-        polyline {
-            opacity: .3;
-            stroke: white;
-            stroke-width: 2px;
-            fill: none;
-        }
-        
-        .button {
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-        }
+    html,
+    body,
+    #map-canvas {
+        height: 100%;
+        padding: 0px;
+        margin-left: 10px;
+        margin-right: 20px;
+        margin-top: 10px;
+        background: #0F0F0F;
+    }
+    
+    label {
+        color: white;
+    }
+    
+    #map-canvas {
+        vertical-align: bottom;
+        width: 100%!important;
+        height: 600px!imortant;
+        display: inline-block;
+        top: 0px;
+        overflow: scroll!important;
+        color: black;
+    }
+    
+    #map {
+        color: white;
+        display: inline-block;
+        top: 0px;
+        width: 100%!important;
+        height: 600px!important;
+        margin-bottom: 10px;
+    }
+    
+    polyline {
+        opacity: .3;
+        stroke: white;
+        stroke-width: 2px;
+        fill: none;
+    }
+    
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
     </style>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -84,113 +84,113 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="HackerSpace.js"></script>
     <script type="text/javascript">
-        var infowindow;
+    var infowindow;
 
-        var words = ["mountains", "ski", "shop", "eat", "people", "snow", "cold", "food", "clothes", "magic", "mounds of snow", "delicious"];
-
-
-
-        var styles = [{
-            "featureType": "all",
-            "elementType": "labels.text.fill",
-            "stylers": [{
-                "color": "#ffffff"
-            }]
-        }, {
-            "featureType": "all",
-            "elementType": "labels.text.stroke",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 13
-            }]
-        }, {
-            "featureType": "administrative",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#000000"
-            }]
-        }, {
-            "featureType": "administrative",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-                "color": "#144b53"
-            }, {
-                "lightness": 14
-            }, {
-                "weight": 1.4
-            }]
-        }, {
-            "featureType": "landscape",
-            "elementType": "all",
-            "stylers": [{
-                "color": "#08304b"
-            }]
-        }, {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#0c4152"
-            }, {
-                "lightness": 5
-            }]
-        }, {
-            "featureType": "road.highway",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#000000"
-            }]
-        }, {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-                "color": "#0b434f"
-            }, {
-                "lightness": 25
-            }]
-        }, {
-            "featureType": "road.arterial",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#000000"
-            }]
-        }, {
-            "featureType": "road.arterial",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-                "color": "#0b3d51"
-            }, {
-                "lightness": 16
-            }]
-        }, {
-            "featureType": "road.local",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#000000"
-            }]
-        }, {
-            "featureType": "transit",
-            "elementType": "all",
-            "stylers": [{
-                "color": "#146474"
-            }]
-        }, {
-            "featureType": "water",
-            "elementType": "all",
-            "stylers": [{
-                "color": "#021019"
-            }]
-        }];
+    var words = ["mountains", "ski", "shop", "eat", "people", "snow", "cold", "food", "clothes", "magic", "mounds of snow", "delicious"];
 
 
 
-        var mcircle1f = {
-            path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-            fillColor: 'red',
-            fillOpacity: 1,
-            scale: 2,
-            strokeWeight: 0
-        };
+    var styles = [{
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [{
+            "color": "#ffffff"
+        }]
+    }, {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [{
+            "color": "#000000"
+        }, {
+            "lightness": 13
+        }]
+    }, {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [{
+            "color": "#000000"
+        }]
+    }, {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+            "color": "#144b53"
+        }, {
+            "lightness": 14
+        }, {
+            "weight": 1.4
+        }]
+    }, {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [{
+            "color": "#08304b"
+        }]
+    }, {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [{
+            "color": "#0c4152"
+        }, {
+            "lightness": 5
+        }]
+    }, {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [{
+            "color": "#000000"
+        }]
+    }, {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+            "color": "#0b434f"
+        }, {
+            "lightness": 25
+        }]
+    }, {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [{
+            "color": "#000000"
+        }]
+    }, {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+            "color": "#0b3d51"
+        }, {
+            "lightness": 16
+        }]
+    }, {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [{
+            "color": "#000000"
+        }]
+    }, {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [{
+            "color": "#146474"
+        }]
+    }, {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [{
+            "color": "#021019"
+        }]
+    }];
+
+
+
+    var mcircle1f = {
+        path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+        fillColor: 'red',
+        fillOpacity: 1,
+        scale: 2,
+        strokeWeight: 0
+    };
     //orange store
     var mcircle2f = {
         path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
@@ -215,8 +215,8 @@
         scale: 1,
         strokeWeight: 0
     };
-</script>
-<style type="text/css">
+    </script>
+    <style type="text/css">
     html,
     body {
         height: 100%;
@@ -227,46 +227,46 @@
     #map {
         height: 100%;
     }
-</style>
-<!-- Bootstrap core CSS -->
-<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-<!-- <link href="js/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
-<!-- Custom styles for this template -->
-<link href="cover.css" rel="stylesheet">
-<!-- <link href="css/cover.css" rel="stylesheet"> -->
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-<!-- // <script src="js/ie-emulation-modes-warning.js"></script> -->
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    </style>
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- <link href="js/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+    <!-- <link href="css/cover.css" rel="stylesheet"> -->
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- // <script src="js/ie-emulation-modes-warning.js"></script> -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="site-wrapper">
         <div class="site-wrapper-inner">
             <!-- <div class="cover-container"> -->
-                <div class="inner cover">
-                    <h1 class="cover-heading">Andorra Tourist Media Pattern Mining</h1>
-                    <p class="lead">Hereie's Social Mapping and its correlation with point of interests.</p>
+            <div class="inner cover">
+                <h1 class="cover-heading">Andorra Tourist Media Pattern Mining</h1>
+                <p class="lead">Hereie's Social Mapping and its correlation with point of interests.</p>
+            </div>
+            {{>googleMap}}
+            <div class="inner cover">
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-default">Learn more</a>
+                </p>
+            </div>
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@Ernie Ho</a>.</p>
                 </div>
-                {{>googleMap}}
-                <div class="inner cover">
-                    <p class="lead">
-                        <a href="#" class="btn btn-lg btn-default">Learn more</a>
-                    </p>
-                </div>
-                <div class="mastfoot">
-                    <div class="inner">
-                        <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@Ernie Ho</a>.</p>
-                    </div>
-                </div>
+            </div>
             <!-- </div> -->
         </div>
     </div>
@@ -275,7 +275,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
-        window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
     </script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -311,14 +311,31 @@
 <template name="googleMap">
     <div id="map" height="400px">
         <div id="map-canvas"></div>
-        <button class="mark-tweets">
-            Mark Tweets
+        //0
+        <button class="restaurant_poi" value='0'>
+            Restuarant
+        </button>
+        //1
+        <button class="store_poi" value='1'>
+            Store
+        </button>
+        //2
+        <button class="transit_station_poi" value='2'>
+            transit_station
+        </button>
+        //3
+        <button class="shopping_mall_poi" value='3'>
+            Shopping_mall
+        </button>
+        //4
+        <button class="natural_feature_poi" value="4">
+            Natural_feature
         </button>
     </div>
-    {{>tweet}} {{>restaurant_poi}}
+    {{>tweet}}
     <script type="text/javascript">
-        var map;
-        var infowindow;
+    var map;
+    var infowindow;
     // var mcircle2f = {
     //     path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
     //     fillColor: 'blue',
@@ -327,8 +344,9 @@
     //     strokeWeight: 0
     // };
 
+    var count = 0;
 
-    function initMap() {
+    function initMap(count) {
         var pyrmont = {
             lat: 42.5052221,
             lng: 1.5219545
@@ -342,101 +360,222 @@
 
         infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
-        // service.radarSearch({
-        //     location: pyrmont,
-        //     radius: 2000,
-        //     type: ['store']
-        // }, callback);
-        // service.radarSearch({
-        //     location: pyrmont,
-        //     radius: 2000,
-        //     type: ['restaurant']
-        // }, callback4);
-service.radarSearch({
-    location: pyrmont,
-    radius: 2000,
-    type: ['transit_station']
-}, callback5);
+        alert('Count: ' + count);
+        if (count == 0) {
+            service.radarSearch({
+                location: pyrmont,
+                radius: 2000,
+                type: ['restaurant']
+            }, callback);
+        }
+
+        if (count == 1) {
+            service.radarSearch({
+                location: pyrmont,
+                radius: 2000,
+                type: ['store']
+            }, callback4);
+        }
+
+        if (count == 2) {
+            service.radarSearch({
+                location: pyrmont,
+                radius: 2000,
+                type: ['transit_station']
+            }, callback5);
+        }
+
+                if (count == 3) {
+            service.radarSearch({
+                location: pyrmont,
+                radius: 2000,
+                type: ['shopping_mall']
+            }, callback5);
+        }
 
 
-};
+        if (count == 4) {
+            service.radarSearch({
+                location: pyrmont,
+                radius: 2000,
+                type: ['natural_feature']
+            }, callback5);
+        }
 
 
-// function callback5(results, status) {
-//     if (status === google.maps.places.PlacesServiceStatus.OK) {
-//         for (var i = 0; i < results.length; i++) {
-//             createMarker5(results[i]);
-//         }
-//     }
-
-// }
-// function createMarker5(place) {
-//     var placeLoc = place.geometry.location;
-//     var marker = new google.maps.Marker({
-//         map: map,
-//         position: place.geometry.location,
-//         icon: mcircle5f
-//     });
-
-//     google.maps.event.addListener(marker, 'click', function() {
-//         infowindow.setContent(place.name);
-//         infowindow.open(map, this);
-//     });
-// };
+    };
 
 
+    function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker(results[i]);
+            }
+        }
+    };
 
+    function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            icon: mcircle2f
+        });
 
-    // function callback(results, status) {
-    //     if (status === google.maps.places.PlacesServiceStatus.OK) {
-    //         for (var i = 0; i < results.length; i++) {
-    //             createMarker(results[i]);
-    //         }
-    //     }
-    // };
-    // function createMarker(place) {
-    //     var placeLoc = place.geometry.location;
-    //     var marker = new google.maps.Marker({
-    //         map: map,
-    //         position: place.geometry.location,
-    //         icon:mcircle2f
-    //     });
-
-    //     google.maps.event.addListener(marker, 'click', function() {
-    //         infowindow.setContent(place.name);
-    //         infowindow.open(map, this);
-    //     });
-    // };
-
-
-    // function callback4(results, status) {
-    //     if (status === google.maps.places.PlacesServiceStatus.OK) {
-    //         for (var i = 0; i < results.length; i++) {
-    //             createMarker4(results[i]);
-    //         }
-    //     }
-    // }
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+        });
+    };
 
 
 
-    // function createMarker4(place) {
-    //     var placeLoc = place.geometry.location;
-    //     var marker4 = new google.maps.Marker({
-    //         map: map,
-    //         position: place.geometry.location,
-    //         icon:mcircle3f
-    //     });
 
-    //     google.maps.event.addListener(marker4, 'click', function() {
-    //         infowindow.setContent(place.name);
-    //         infowindow.open(map, this);
-    //     });
-    // }
-</script>
-<div id="map"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&libraries=places&callback=initMap" async defer></script>
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script>
+
+
+
+
+
+    function callback1(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker1(results[i]);
+            }
+        }
+    };
+
+    function createMarker1(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            icon: mcircle1f
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+        });
+    };
+
+
+
+
+    function callback2(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker2(results[i]);
+            }
+        }
+    };
+
+    function createMarker2(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            icon: mcircle2f
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+        });
+    };
+
+
+
+
+
+
+
+
+        function callback3(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker3(results[i]);
+            }
+        }
+    };
+
+    function createMarker3(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            icon: mcircle3f
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+        });
+    };
+
+
+    function callback4(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker4(results[i]);
+            }
+        }
+    }
+
+    function createMarker4(place) {
+        var placeLoc = place.geometry.location;
+        var marker4 = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            icon: mcircle4f
+        });
+
+        google.maps.event.addListener(marker4, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+        });
+    }
+
+
+
+
+
+    function callback5(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker5(results[i]);
+            }
+        }
+
+    }
+
+    function createMarker5(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            icon: mcircle5f
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+        });
+    };
+
+
+
+
+
+
+
+
+
+
+    </script>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&libraries=places&callback=initMap" async defer></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script>
     // // Generate a Bates distribution of 10 random variables.
     // var values = d3.range(1000).map(d3.random.bates(10));
 
@@ -505,5 +644,5 @@ service.radarSearch({
     // .attr("class", "x axis")
     // .attr("transform", "translate(0," + height + ")")
     // .call(xAxis);
-</script>
+    </script>
 </template>

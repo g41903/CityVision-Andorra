@@ -3,142 +3,145 @@ Tasks = new Mongo.Collection("tasks");
 Tweets = new Mongo.Collection("tweets");
 
 Tweets3 = new Mongo.Collection("tweets3");
-     var styles = [
+
+
+var count = 0;
+var styles = [
+{
+    "featureType": "all",
+    "elementType": "labels.text.fill",
+    "stylers": [
     {
-        "featureType": "all",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 13
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#144b53"
-            },
-            {
-                "lightness": 14
-            },
-            {
-                "weight": 1.4
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#08304b"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#0c4152"
-            },
-            {
-                "lightness": 5
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#0b434f"
-            },
-            {
-                "lightness": 25
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#0b3d51"
-            },
-            {
-                "lightness": 16
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#146474"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#021019"
-            }
-        ]
+        "color": "#ffffff"
     }
+    ]
+},
+{
+    "featureType": "all",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+    {
+        "color": "#000000"
+    },
+    {
+        "lightness": 13
+    }
+    ]
+},
+{
+    "featureType": "administrative",
+    "elementType": "geometry.fill",
+    "stylers": [
+    {
+        "color": "#000000"
+    }
+    ]
+},
+{
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+    {
+        "color": "#144b53"
+    },
+    {
+        "lightness": 14
+    },
+    {
+        "weight": 1.4
+    }
+    ]
+},
+{
+    "featureType": "landscape",
+    "elementType": "all",
+    "stylers": [
+    {
+        "color": "#08304b"
+    }
+    ]
+},
+{
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+    {
+        "color": "#0c4152"
+    },
+    {
+        "lightness": 5
+    }
+    ]
+},
+{
+    "featureType": "road.highway",
+    "elementType": "geometry.fill",
+    "stylers": [
+    {
+        "color": "#000000"
+    }
+    ]
+},
+{
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+    {
+        "color": "#0b434f"
+    },
+    {
+        "lightness": 25
+    }
+    ]
+},
+{
+    "featureType": "road.arterial",
+    "elementType": "geometry.fill",
+    "stylers": [
+    {
+        "color": "#000000"
+    }
+    ]
+},
+{
+    "featureType": "road.arterial",
+    "elementType": "geometry.stroke",
+    "stylers": [
+    {
+        "color": "#0b3d51"
+    },
+    {
+        "lightness": 16
+    }
+    ]
+},
+{
+    "featureType": "road.local",
+    "elementType": "geometry",
+    "stylers": [
+    {
+        "color": "#000000"
+    }
+    ]
+},
+{
+    "featureType": "transit",
+    "elementType": "all",
+    "stylers": [
+    {
+        "color": "#146474"
+    }
+    ]
+},
+{
+    "featureType": "water",
+    "elementType": "all",
+    "stylers": [
+    {
+        "color": "#021019"
+    }
+    ]
+}
 ];
 
 
@@ -150,8 +153,8 @@ if (Meteor.isServer) {
     Meteor.publish("tasks", function() {
         return Tasks.find({
             $or: [
-                { private: { $ne: true } },
-                { owner: this.userId }
+            { private: { $ne: true } },
+            { owner: this.userId }
             ]
 
         });
@@ -223,11 +226,11 @@ if (Meteor.isClient) {
             preserveViewport: true
                 // suppressMarkers:true,
                 // routeIndex:i
-        };
+            };
 
-        $(function() {
+            $(function() {
 
-        });
+            });
 
         // var directionsDisplay;
         // var directionsService = new google.maps.DirectionsService();
@@ -329,23 +332,23 @@ if (Meteor.isClient) {
                 //         searchTerm(val) 
                 //     }
                 // });
-            }
+}
 
-            function searchTerm(term) {
-                alert("I AM SEARCHING FOR: " + term)
+function searchTerm(term) {
+    alert("I AM SEARCHING FOR: " + term)
                     // TODO: Search the term in the list and change the map display
-            }
+                }
 
-            google.maps.event.addDomListener(window, 'load', initMap);
-        });
+                google.maps.event.addDomListener(window, 'load', initMap);
+            });
 
-    });
+});
 
 
 
-    Template.body.helpers({
-        tasks: function() {
-            if (Session.get("hideCompleted")) {
+Template.body.helpers({
+    tasks: function() {
+        if (Session.get("hideCompleted")) {
                 // If hide completed is checked, filter tasks
                 return Tasks.find({ checked: { $ne: true } }, { sort: { createdAt: -1 } });
             } else {
@@ -392,18 +395,18 @@ if (Meteor.isClient) {
                 }
             })
 
-        }
+}
 
 
 
 
 
 
-    });
+});
 
 
-    Template.task.helpers({
-        isOwner: function() {
+Template.task.helpers({
+    isOwner: function() {
             // return this.owner === Meteor.userId();
             return true;
         }
@@ -414,13 +417,13 @@ if (Meteor.isClient) {
 
 
 
-    Template.tweet.helpers({
+Template.tweet.helpers({
 
 
-        tweetJson: function() {
+    tweetJson: function() {
 
 
-            var social_marker_locations = [];
+        var social_marker_locations = [];
 
             // var subs= Meteor.subscribe('tweets');
 
@@ -459,17 +462,17 @@ if (Meteor.isClient) {
 
 
             });
-        },
+},
 
-        getTweets3: function() {
+getTweets3: function() {
 
-            var tweet_details = [];
-            Meteor.autorun(function() {
-                var subs = Meteor.subscribe('tweets3');
-                if (subs.ready()) {
-                    tweet3 = Tweets3.find().fetch();
-                    for (var document_key in tweet3) {
-                        record_val = tweet3[document_key];
+    var tweet_details = [];
+    Meteor.autorun(function() {
+        var subs = Meteor.subscribe('tweets3');
+        if (subs.ready()) {
+            tweet3 = Tweets3.find().fetch();
+            for (var document_key in tweet3) {
+                record_val = tweet3[document_key];
                         // for(var record_key in document_val){
                         // record_val=document_val[record_key];
                         img_date = record_val['img_date'];
@@ -495,30 +498,269 @@ if (Meteor.isClient) {
                 }
             })
 
-        }
+}
 
 
 
 
 
-    });
+});
 
-    Template.tweet.onCreated(function() {
-
-
-
-
-        }
-
-
-    );
+Template.tweet.onCreated(function() {
 
 
 
 
+}
 
 
-    Template.body.events({
+);
+
+
+
+
+
+
+Template.body.events({
+
+    'click .restaurant_poi': function() {
+        // var count = 0;
+        var me = $(this);
+        count=0;
+        // do whatever with me
+        alert('Count: ' + count);
+        // alert(me.val());
+        // me.hide();
+        initMap(count);
+        
+        // alert('initMap');
+
+        var tweet_details = [];
+        Meteor.autorun(function() {
+            var subs = Meteor.subscribe('tweets3');
+            if (subs.ready()) {
+                tweet3 = Tweets3.find().fetch();
+                for (var document_key in tweet3) {
+                    record_val = tweet3[document_key];
+                        // for(var record_key in document_val){
+                        // record_val=document_val[record_key];
+                        img_date = record_val['img_date'];
+                        img_url = record_val['img_url'][0];
+                        img_tags = record_val['img_tags'];
+                        detail_tags = record_val['detail_tags'];
+                        img_latitude = record_val['img_latitude'][0];
+                        img_longitude = record_val['img_longitude'][0];
+                        img_result = record_val['img_result'];
+                        text_result = record_val['text_result'];
+                        created_time = record_val['created_time'];
+                        updated_time = record_val['updated_time'];
+                        page_url=record_val['page_url'];
+                        tweet_details.push([img_date+" "+img_tags, img_latitude, img_longitude, page_url]);
+                        // social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
+
+
+                        // }
+                    }
+                    console.log(JSON.stringify(tweet_details));
+                    Meteor.call("addMarkers", tweet_details);
+
+                }
+            });
+
+return true;
+},
+
+
+
+    'click .store_poi': function() {
+        // var count = 0;
+
+        // do whatever with me
+        count=1;
+        alert('Count: ' + count);
+        // me.hide();
+        initMap(count);
+
+        // alert('initMap');
+
+        var tweet_details = [];
+        Meteor.autorun(function() {
+            var subs = Meteor.subscribe('tweets3');
+            if (subs.ready()) {
+                tweet3 = Tweets3.find().fetch();
+                for (var document_key in tweet3) {
+                    record_val = tweet3[document_key];
+                        // for(var record_key in document_val){
+                        // record_val=document_val[record_key];
+                        img_date = record_val['img_date'];
+                        img_url = record_val['img_url'][0];
+                        img_tags = record_val['img_tags'];
+                        detail_tags = record_val['detail_tags'];
+                        img_latitude = record_val['img_latitude'][0];
+                        img_longitude = record_val['img_longitude'][0];
+                        img_result = record_val['img_result'];
+                        text_result = record_val['text_result'];
+                        created_time = record_val['created_time'];
+                        updated_time = record_val['updated_time'];
+                        page_url=record_val['page_url'];
+                        tweet_details.push([img_date+" "+img_tags, img_latitude, img_longitude, page_url]);
+                        // social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
+
+
+                        // }
+                    }
+                    console.log(JSON.stringify(tweet_details));
+                    Meteor.call("addMarkers", tweet_details);
+
+                }
+            })
+
+return true;
+},
+
+
+
+
+
+
+    'click .transit_station_poi': function() {
+        // var count = 0;
+        count=2;
+        alert('Count: ' + count);
+        // me.hide();
+        initMap(count);
+        // alert('initMap');
+
+        var tweet_details = [];
+        Meteor.autorun(function() {
+            var subs = Meteor.subscribe('tweets3');
+            if (subs.ready()) {
+                tweet3 = Tweets3.find().fetch();
+                for (var document_key in tweet3) {
+                    record_val = tweet3[document_key];
+                        // for(var record_key in document_val){
+                        // record_val=document_val[record_key];
+                        img_date = record_val['img_date'];
+                        img_url = record_val['img_url'][0];
+                        img_tags = record_val['img_tags'];
+                        detail_tags = record_val['detail_tags'];
+                        img_latitude = record_val['img_latitude'][0];
+                        img_longitude = record_val['img_longitude'][0];
+                        img_result = record_val['img_result'];
+                        text_result = record_val['text_result'];
+                        created_time = record_val['created_time'];
+                        updated_time = record_val['updated_time'];
+                        page_url=record_val['page_url'];
+                        tweet_details.push([img_date+" "+img_tags, img_latitude, img_longitude, page_url]);
+                        // social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
+
+
+                        // }
+                    }
+                    console.log(JSON.stringify(tweet_details));
+                    Meteor.call("addMarkers", tweet_details);
+
+                }
+            })
+
+return true;
+},
+
+
+
+
+
+    'click .shopping_mall_poi': function() {
+        // var count = 0;
+        count=3;
+                alert('Count: ' + count);
+        // me.hide();
+        initMap(count);
+        // alert('initMap');
+
+        var tweet_details = [];
+        Meteor.autorun(function() {
+            var subs = Meteor.subscribe('tweets3');
+            if (subs.ready()) {
+                tweet3 = Tweets3.find().fetch();
+                for (var document_key in tweet3) {
+                    record_val = tweet3[document_key];
+                        // for(var record_key in document_val){
+                        // record_val=document_val[record_key];
+                        img_date = record_val['img_date'];
+                        img_url = record_val['img_url'][0];
+                        img_tags = record_val['img_tags'];
+                        detail_tags = record_val['detail_tags'];
+                        img_latitude = record_val['img_latitude'][0];
+                        img_longitude = record_val['img_longitude'][0];
+                        img_result = record_val['img_result'];
+                        text_result = record_val['text_result'];
+                        created_time = record_val['created_time'];
+                        updated_time = record_val['updated_time'];
+                        page_url=record_val['page_url'];
+                        tweet_details.push([img_date+" "+img_tags, img_latitude, img_longitude, page_url]);
+                        // social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
+
+
+                        // }
+                    }
+                    console.log(JSON.stringify(tweet_details));
+                    Meteor.call("addMarkers", tweet_details);
+
+                }
+            })
+
+return true;
+},
+
+
+
+
+
+    'click .natural_feature_poi': function() {
+        // var count = 0;
+        count=4;
+        // me.hide();
+        initMap(count);
+
+        // alert('initMap');
+
+        var tweet_details = [];
+        Meteor.autorun(function() {
+            var subs = Meteor.subscribe('tweets3');
+            if (subs.ready()) {
+                tweet3 = Tweets3.find().fetch();
+                for (var document_key in tweet3) {
+                    record_val = tweet3[document_key];
+                        // for(var record_key in document_val){
+                        // record_val=document_val[record_key];
+                        img_date = record_val['img_date'];
+                        img_url = record_val['img_url'][0];
+                        img_tags = record_val['img_tags'];
+                        detail_tags = record_val['detail_tags'];
+                        img_latitude = record_val['img_latitude'][0];
+                        img_longitude = record_val['img_longitude'][0];
+                        img_result = record_val['img_result'];
+                        text_result = record_val['text_result'];
+                        created_time = record_val['created_time'];
+                        updated_time = record_val['updated_time'];
+                        page_url=record_val['page_url'];
+                        tweet_details.push([img_date+" "+img_tags, img_latitude, img_longitude, page_url]);
+                        // social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
+
+
+                        // }
+                    }
+                    console.log(JSON.stringify(tweet_details));
+                    Meteor.call("addMarkers", tweet_details);
+
+                }
+            })
+
+return true;
+}
+
+
         // 'click .mark-tweets': function() {
         //     var map;
         //     var infowindow;
@@ -577,8 +819,8 @@ if (Meteor.isClient) {
     });
 
 
-    Template.task.events({
-        "click .toggle-checked": function() {
+Template.task.events({
+    "click .toggle-checked": function() {
             // Set the checked property to the opposite of its current value
             Meteor.call("setChecked", this._id, !this.checked);
         },
@@ -591,22 +833,22 @@ if (Meteor.isClient) {
     });
 
 
-    Template.tweet.events({
-        'click .tweet-checked': function() {
-            Meteor.call("findTweets", this._id);
-        },
+Template.tweet.events({
+    'click .tweet-checked': function() {
+        Meteor.call("findTweets", this._id);
+    },
 
-        'click .test-router': function() {
-            Meteor.call("renderDirection", routes);
-        }
-    });
-
-
+    'click .test-router': function() {
+        Meteor.call("renderDirection", routes);
+    }
+});
 
 
-    Accounts.ui.config({
-        passwordSignupFields: "USERNAME_ONLY"
-    });
+
+
+Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+});
 
 
 }
@@ -708,7 +950,7 @@ Meteor.methods({
         //     width:150
         // };
         //   var instagram_img = {
-        //     url: myContent,
+        //     url: myCont Tweent,
         //     size: new google.maps.Size(71, 71),
         //     origin: new google.maps.Point(0, 0),
         //     anchor: new google.maps.Point(17, 34),
@@ -721,14 +963,14 @@ Meteor.methods({
             map: map,
             icon: mcircle1f
                 // icon:instagram_img
-        });
+            });
         // This can be changed from 'click' to 'hover' if desired
         google.maps.event.addListener(marker, 'click', function() {
             // TODO: Add more information about each location in the popup window
             // infowindow.setContent("<h3>" + place + "</h3>");
 
             // infowindow.setContent('<p><img src=' + myContent + 'height="150" width="150"></p>' + "<h3>" + place + "</h3>");
-                infowindow.setContent("<h3>" + place + "</h3>"+'<iframe src="'+myContent+'"></iframe>');
+            infowindow.setContent("<h3>" + place + "</h3>"+'<iframe src="'+myContent+'"></iframe>');
             infowindow.open(map, this);
         });
     }
