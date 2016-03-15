@@ -728,7 +728,7 @@ Meteor.methods({
             // infowindow.setContent("<h3>" + place + "</h3>");
 
             // infowindow.setContent('<p><img src=' + myContent + 'height="150" width="150"></p>' + "<h3>" + place + "</h3>");
-                infowindow.setContent("<h3>" + place + "</h3>"+'<p>'+myContent+'</p>');
+                infowindow.setContent("<h3>" + place + "</h3>"+'<iframe src="'+myContent+'"></iframe>');
             infowindow.open(map, this);
         });
     }
