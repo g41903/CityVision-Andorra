@@ -342,7 +342,7 @@ if (Meteor.isClient) {
                         text_result = record_val['text_result'];
                         created_time = record_val['created_time'];
                         updated_time = record_val['updated_time'];
-                        tweet_details.push([img_tags, img_latitude, img_longitude, img_date]);
+                        tweet_details.push([img_date+" "+img_tags, img_latitude, img_longitude, img_date]);
                         // social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
 
 

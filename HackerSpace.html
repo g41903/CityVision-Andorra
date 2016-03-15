@@ -85,47 +85,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="HackerSpace.js"></script>
     <script type="text/javascript">
-    //global variables 
-    // var map;
-    // var markers = {
-    //     // "MIT Media Lab": new google.maps.LatLng(42.3607764,-71.0878372), 
-    //     "Boston Common": new google.maps.LatLng(42.35511, -71.06558),
-    //     "Boston Massacre Site": new google.maps.LatLng(42.3587, -71.05749),
-    //     "Faneuil Hall Marketplace": new google.maps.LatLng(42.3601, -71.05476),
-    //     "USS Constitution Museum": new google.maps.LatLng(42.37397, -71.05542),
-    //     "MIT Media Lab": new google.maps.LatLng(42.3607764, -71.0878372)
-    // };
-
-
-
-    // var markers2 = {
-    //     // "MIT Media Lab": new google.maps.LatLng(42.3607764,-71.0878372),
-
-    //     "Prudential Center": new google.maps.LatLng(42.342464, -71.083617),
-    //     "Northeastern University": new google.maps.LatLng(42.30065, -71.11387),
-    //     "Dudley Mansion (Nathaniel Askia House)": new google.maps.LatLng(42.30628, -71.10944),
-    //     'Jackson Square': new google.maps.LatLng(42.31463, -71.10538),
-    //     'Centre Street': new google.maps.LatLng(42.32282, -71.10102),
-    //     'Minton Street': new google.maps.LatLng(42.32934, -71.09578),
-    //     'Forest Hills Station': new google.maps.LatLng(42.30065, -71.11387)
-    // };
-
-    // //Wet
-
-    // var markers3 = {
-    //     // "MIT Media Lab": new google.maps.LatLng(42.3607764,-71.0878372),
-    //     "MIT Media Lab": new google.maps.LatLng(42.36069, -71.08751),
-    //     "Central Square": new google.maps.LatLng(42.365534, -71.103941),
-    //     "Harvard Square": new google.maps.LatLng(42.37334, -71.11891),
-    //     "John F. Kennedy Park": new google.maps.LatLng(42.3709, -71.12323),
-    //     'Longfellow Park': new google.maps.LatLng(42.37695, -71.12638),
-    //     'Mount Auburn Cemetery': new google.maps.LatLng(42.37486, -71.14242),
-    //     'Harvard Square': new google.maps.LatLng(42.37341, -71.13112)
-    // };
-
-
-
-
 
     var infowindow;
 
@@ -346,7 +305,7 @@
 
     var mcircle1f = {
         path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-        fillColor: 'yellow',
+        fillColor: 'red',
         fillOpacity: 1,
         scale: 2,
         strokeWeight: 0
@@ -354,7 +313,7 @@
 
     var mcircle2f = {
         path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-        fillColor: '#aaff80',
+        fillColor: 'blue',
         fillOpacity: 1,
         scale: 2,
         strokeWeight: 0
@@ -362,7 +321,7 @@
 
     var mcircle3f = {
         path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-        fillColor: '#ff4000',
+        fillColor: 'green',
         fillOpacity: 1,
         scale: 2,
         strokeWeight: 0
@@ -394,126 +353,7 @@
             Mark Tweets
         </button>
     </div>
-    <!--    <div id="directionsPanel" style="float:right;width:30%;height 100%"></div> -->
-    <!--     <input type="button" onClick="renderDirection2()" value="Explore Easy!" />
-    <input type="button" onClick="renderDirection()" value="Explore Medium!" />
-    <input type="button" onClick="renderDirection3()" value="Explore Hard!" />
-    <input type="button" onClick="renderDirection4()" value="Explore all!" />
-    <input type="button" onClick="clearMarkers()" value="Clear Markers" /> -->
-    <script type="text/javascript">
-    //     function renderDirection() {
 
-    //         var directionsService = new google.maps.DirectionsService();
-    //     // var i=0;
-    //     routes.forEach(function(route) {
-    //         // console.log('Here J is: '+j);
-    //         console.log(JSON.stringify(route));
-    //         var request = {
-    //             origin: route.origin,
-    //             destination: route.destination,
-    //             travelMode: google.maps.TravelMode.WALKING
-    //         };
-    //         var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-
-    //         directionsDisplay.setMap(map);
-
-    //         directionsService.route(request, function(result, status) {
-    //             console.log(result);
-
-    //             if (status == google.maps.DirectionsStatus.OK) {
-    //                 setTimeout(function() {
-
-    //                     directionsDisplay.setDirections(result);
-
-    //                 }, '1000');
-
-    //             }
-    //         });
-    //     });
-    // }
-
-    // function renderDirection2() {
-    //     routes1.forEach(function(route) {
-    //         setTimeout(function() {
-
-    //             // console.log('Here J is: '+j);
-    //             console.log(JSON.stringify(route));
-    //             var request = {
-    //                 origin: route.origin,
-    //                 destination: route.destination,
-    //                 travelMode: google.maps.TravelMode.WALKING
-    //             };
-    //             var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-
-    //             directionsDisplay.setMap(map);
-
-    //             directionsService.route(request, function(result, status) {
-    //                 console.log(result);
-
-    //                 if (status == google.maps.DirectionsStatus.OK) {
-    //                     directionsDisplay.setDirections(result);
-    //                 }
-    //             });
-
-
-    //         }, '1000');
-
-    //     });
-    // }
-
-    // function renderDirection3() {
-    //     routes2.forEach(function(route) {
-    //         setTimeout(function() {}, '1000');
-    //         // console.log('Here J is: '+j);
-    //         console.log(JSON.stringify(route));
-    //         var request = {
-    //             origin: route.origin,
-    //             destination: route.destination,
-    //             travelMode: google.maps.TravelMode.WALKING
-    //         };
-    //         var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-
-    //         directionsDisplay.setMap(map);
-
-    //         directionsService.route(request, function(result, status) {
-    //             console.log(result);
-
-    //             if (status == google.maps.DirectionsStatus.OK) {
-    //                 directionsDisplay.setDirections(result);
-    //             }
-    //         });
-    //     });
-    // }
-
-
-    // function renderDirection4() {
-    //     // map.setCenter();
-    //     routes3.forEach(function(route) {
-    //         setTimeout(function() {}, '1000');
-
-    //         // console.log('Here J is: '+j);
-    //         console.log(JSON.stringify(route));
-    //         var request = {
-    //             origin: route.origin,
-    //             destination: route.destination,
-    //             travelMode: google.maps.TravelMode.WALKING
-    //         };
-    //         var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-
-    //         directionsDisplay.setMap(map);
-
-
-
-    //         directionsService.route(request, function(result, status) {
-    //             console.log(result);
-
-    //             if (status == google.maps.DirectionsStatus.OK) {
-    //                 directionsDisplay.setDirections(result);
-    //             }
-    //         });
-    //     });
-    // }
-    </script>
     <script type="text/javascript">
     var map;
     var infowindow;
@@ -532,24 +372,36 @@
             lng: 1.5219545
         };
 
-        map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map-canvas'), {
             center: pyrmont,
             zoom: 15
         });
 
         infowindow = new google.maps.InfoWindow();
         var service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
+        service.radarSearch({
             location: pyrmont,
-            radius: 1000,
+            radius: 2000,
             type: ['store']
         }, callback);
+        service.radarSearch({
+            location: pyrmont,
+            radius: 2000,
+            type: ['restaurant']
+        }, callback4);
     }
 
     function callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
                 createMarker(results[i]);
+            }
+        }
+    };
+    function callback4(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker4(results[i]);
             }
         }
     }
@@ -563,6 +415,20 @@
         });
 
         google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+        });
+    }
+
+    function createMarker4(place) {
+        var placeLoc = place.geometry.location;
+        var marker4 = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            icon:mcircle3f
+        });
+
+        google.maps.event.addListener(marker4, 'click', function() {
             infowindow.setContent(place.name);
             infowindow.open(map, this);
         });
