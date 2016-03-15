@@ -460,7 +460,7 @@ if (Meteor.isClient) {
                 }
             })
 
-        },
+        }
 
 
 
