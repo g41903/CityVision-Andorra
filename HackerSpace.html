@@ -2,79 +2,79 @@
     <title>Todo List</title>
     <title>Hacker_Space</title>
     <style>
-    body {
-        font: 10px sans-serif;
-    }
-    
-    .bar rect {
-        fill: steelblue;
-        shape-rendering: crispEdges;
-    }
-    
-    .bar text {
-        fill: #fff;
-    }
-    
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-    }
+        body {
+            font: 10px sans-serif;
+        }
+
+        .bar rect {
+            fill: steelblue;
+            shape-rendering: crispEdges;
+        }
+
+        .bar text {
+            fill: #fff;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
     </style>
     <style>
-    html,
-    body,
-    #map-canvas {
-        height: 100%;
-        padding: 0px;
-        margin-left: 10px;
-        margin-right: 20px;
-        margin-top: 10px;
-        background: #0F0F0F;
-    }
-    
-    label {
-        color: white;
-    }
-    
-    #map-canvas {
-        vertical-align: bottom;
-        width: 100%!important;
-        height: 600px!imortant;
-        display: inline-block;
-        top: 0px;
-        overflow: scroll!important;
-        color: black;
-    }
-    
-    #map {
-        color: white;
-        display: inline-block;
-        top: 0px;
-        width: 100%!important;
-        height: 600px!important;
-        margin-bottom: 10px;
-    }
-    
-    polyline {
-        opacity: .3;
-        stroke: white;
-        stroke-width: 2px;
-        fill: none;
-    }
-    
-    .button {
-        background-color: #4CAF50;
-        /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-    }
+        html,
+        body,
+        #map-canvas {
+            height: 100%;
+            padding: 0px;
+            margin-left: 10px;
+            margin-right: 20px;
+            margin-top: 10px;
+            background: #0F0F0F;
+        }
+
+        label {
+            color: white;
+        }
+
+        #map-canvas {
+            vertical-align: bottom;
+            width: 100%!important;
+            height: 600px!imortant;
+            display: inline-block;
+            top: 0px;
+            overflow: scroll!important;
+            color: black;
+        }
+
+        #map {
+            color: white;
+            display: inline-block;
+            top: 0px;
+            width: 100%!important;
+            height: 600px!important;
+            margin-bottom: 10px;
+        }
+
+        polyline {
+            opacity: .3;
+            stroke: white;
+            stroke-width: 2px;
+            fill: none;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
     </style>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -86,270 +86,347 @@
     <script src="HackerSpace.js"></script>
     <script type="text/javascript">
 
-    var infowindow;
+        var infowindow;
 
-    var words = ["mountains", "ski", "shop", "eat", "people", "snow", "cold", "food", "clothes", "magic", "mounds of snow", "delicious"];
-
-
-
-    var styles = [{
-        "featureType": "all",
-        "elementType": "geometry",
-        "stylers": [{
-            "color": "#815f5f"
-        }]
-    }, {
-        "featureType": "all",
-        "elementType": "labels.text",
-        "stylers": [{
-            "weight": "0.01"
-        }, {
-            "visibility": "on"
-        }]
-    }, {
-        "featureType": "all",
-        "elementType": "labels.text.fill",
-        "stylers": [{
-            "color": "#ffffff"
-        }, {
-            "gamma": "0.14"
-        }]
-    }, {
-        "featureType": "administrative",
-        "elementType": "all",
-        "stylers": [{
-            "hue": "#ffbf00"
-        }, {
-            "saturation": 100
-        }, {
-            "lightness": -22
-        }, {
-            "visibility": "on"
-        }]
-    }, {
-        "featureType": "administrative",
-        "elementType": "labels.text",
-        "stylers": [{
-            "color": "#ffffff"
-        }, {
-            "visibility": "on"
-        }]
-    }, {
-        "featureType": "administrative.land_parcel",
-        "elementType": "geometry.fill",
-        "stylers": [{
-            "color": "#9f4e4e"
-        }]
-    }, {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [{
-            "hue": "#666666"
-        }, {
-            "saturation": -100
-        }, {
-            "lightness": -55
-        }, {
-            "visibility": "on"
-        }]
-    }, {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry.fill",
-        "stylers": [{
-            "color": "#1f0303"
-        }]
-    }, {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry.stroke",
-        "stylers": [{
-            "color": "#f91919"
-        }]
-    }, {
-        "featureType": "landscape.man_made",
-        "elementType": "labels.text",
-        "stylers": [{
-            "color": "#00fff6"
-        }]
-    }, {
-        "featureType": "landscape.man_made",
-        "elementType": "labels.text.fill",
-        "stylers": [{
-            "color": "#ffffff"
-        }]
-    }, {
-        "featureType": "landscape.natural.landcover",
-        "elementType": "geometry.fill",
-        "stylers": [{
-            "color": "#3b2828"
-        }]
-    }, {
-        "featureType": "landscape.natural.terrain",
-        "elementType": "geometry",
-        "stylers": [{
-            "color": "#e17a7a"
-        }]
-    }, {
-        "featureType": "landscape.natural.terrain",
-        "elementType": "geometry.fill",
-        "stylers": [{
-            "color": "#bb2828"
-        }]
-    }, {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [{
-            "hue": "#555555"
-        }, {
-            "saturation": -100
-        }, {
-            "lightness": -57
-        }, {
-            "visibility": "on"
-        }]
-    }, {
-        "featureType": "poi",
-        "elementType": "labels",
-        "stylers": [{
-            "hue": "#555555"
-        }, {
-            "saturation": -100
-        }, {
-            "lightness": -57
-        }, {
-            "visibility": "off"
-        }]
-    }, {
-        "featureType": "road",
-        "elementType": "all",
-        "stylers": [{
-            "saturation": -100
-        }, {
-            "lightness": "-61"
-        }, {
-            "visibility": "on"
-        }, {
-            "color": "#a9955b"
-        }, {
-            "gamma": "1.19"
-        }, {
-            "weight": "0.14"
-        }]
-    }, {
-        "featureType": "road",
-        "elementType": "geometry.fill",
-        "stylers": [{
-            "color": "#f9aa8a"
-        }]
-    }, {
-        "featureType": "road",
-        "elementType": "labels.text",
-        "stylers": [{
-            "color": "#101010"
-        }, {
-            "weight": "0.01"
-        }]
-    }, {
-        "featureType": "road",
-        "elementType": "labels.icon",
-        "stylers": [{
-            "visibility": "off"
-        }]
-    }, {
-        "featureType": "road.highway.controlled_access",
-        "elementType": "labels.icon",
-        "stylers": [{
-            "color": "#706e6e"
-        }, {
-            "visibility": "off"
-        }]
-    }, {
-        "featureType": "road.arterial",
-        "elementType": "labels.icon",
-        "stylers": [{
-            "color": "#7d7676"
-        }, {
-            "visibility": "off"
-        }]
-    }, {
-        "featureType": "road.local",
-        "elementType": "labels.icon",
-        "stylers": [{
-            "color": "#757373"
-        }, {
-            "visibility": "off"
-        }]
-    }, {
-        "featureType": "transit",
-        "elementType": "all",
-        "stylers": [{
-            "hue": "#444444"
-        }, {
-            "lightness": -64
-        }, {
-            "visibility": "off"
-        }]
-    }, {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [{
-            "hue": "#252525"
-        }, {
-            "saturation": -100
-        }, {
-            "lightness": -81
-        }, {
-            "visibility": "on"
-        }]
-    }];
+        var words = ["mountains", "ski", "shop", "eat", "people", "snow", "cold", "food", "clothes", "magic", "mounds of snow", "delicious"];
 
 
-    var mcircle1f = {
-        path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-        fillColor: 'red',
-        fillOpacity: 1,
-        scale: 2,
-        strokeWeight: 0
-    };
 
-    var mcircle2f = {
-        path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-        fillColor: 'blue',
-        fillOpacity: 1,
-        scale: 2,
-        strokeWeight: 0
-    };
+        var styles = [{
+            "featureType": "all",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#815f5f"
+            }]
+        }, {
+            "featureType": "all",
+            "elementType": "labels.text",
+            "stylers": [{
+                "weight": "0.01"
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "all",
+            "elementType": "labels.text.fill",
+            "stylers": [{
+                "color": "#ffffff"
+            }, {
+                "gamma": "0.14"
+            }]
+        }, {
+            "featureType": "administrative",
+            "elementType": "all",
+            "stylers": [{
+                "hue": "#ffbf00"
+            }, {
+                "saturation": 100
+            }, {
+                "lightness": -22
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "administrative",
+            "elementType": "labels.text",
+            "stylers": [{
+                "color": "#ffffff"
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "administrative.land_parcel",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#9f4e4e"
+            }]
+        }, {
+            "featureType": "landscape",
+            "elementType": "all",
+            "stylers": [{
+                "hue": "#666666"
+            }, {
+                "saturation": -100
+            }, {
+                "lightness": -55
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "landscape.man_made",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#1f0303"
+            }]
+        }, {
+            "featureType": "landscape.man_made",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                "color": "#f91919"
+            }]
+        }, {
+            "featureType": "landscape.man_made",
+            "elementType": "labels.text",
+            "stylers": [{
+                "color": "#00fff6"
+            }]
+        }, {
+            "featureType": "landscape.man_made",
+            "elementType": "labels.text.fill",
+            "stylers": [{
+                "color": "#ffffff"
+            }]
+        }, {
+            "featureType": "landscape.natural.landcover",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#3b2828"
+            }]
+        }, {
+            "featureType": "landscape.natural.terrain",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#e17a7a"
+            }]
+        }, {
+            "featureType": "landscape.natural.terrain",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#bb2828"
+            }]
+        }, {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [{
+                "hue": "#555555"
+            }, {
+                "saturation": -100
+            }, {
+                "lightness": -57
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "poi",
+            "elementType": "labels",
+            "stylers": [{
+                "hue": "#555555"
+            }, {
+                "saturation": -100
+            }, {
+                "lightness": -57
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "all",
+            "stylers": [{
+                "saturation": -100
+            }, {
+                "lightness": "-61"
+            }, {
+                "visibility": "on"
+            }, {
+                "color": "#a9955b"
+            }, {
+                "gamma": "1.19"
+            }, {
+                "weight": "0.14"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#f9aa8a"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "labels.text",
+            "stylers": [{
+                "color": "#101010"
+            }, {
+                "weight": "0.01"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "road.highway.controlled_access",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "color": "#706e6e"
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "road.arterial",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "color": "#7d7676"
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "road.local",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "color": "#757373"
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "transit",
+            "elementType": "all",
+            "stylers": [{
+                "hue": "#444444"
+            }, {
+                "lightness": -64
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [{
+                "hue": "#252525"
+            }, {
+                "saturation": -100
+            }, {
+                "lightness": -81
+            }, {
+                "visibility": "on"
+            }]
+        }];
 
-    var mcircle3f = {
-        path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-        fillColor: 'green',
-        fillOpacity: 1,
-        scale: 2,
-        strokeWeight: 0
-    };
+
+        var mcircle1f = {
+            path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+            fillColor: 'red',
+            fillOpacity: 1,
+            scale: 2,
+            strokeWeight: 0
+        };
+
+        var mcircle2f = {
+            path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+            fillColor: 'blue',
+            fillOpacity: 1,
+            scale: 2,
+            strokeWeight: 0
+        };
+
+        var mcircle3f = {
+            path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+            fillColor: 'green',
+            fillOpacity: 1,
+            scale: 2,
+            strokeWeight: 0
+        };
     </script>
     <style type="text/css">
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    
-    #map {
-        height: 100%;
-    }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
     </style>
 
-  <link href="cover.css" rel="stylesheet">
-    
-</head>
 
-<body>
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
 
-{{>googleMap}}
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- <link href="js/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+    <!-- <link href="css/cover.css" rel="stylesheet"> -->
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- // <script src="js/ie-emulation-modes-warning.js"></script> -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+
+  </head>
+
+
+
+  <body>
+
+      <div class="site-wrapper">
+
+        <div class="site-wrapper-inner">
+
+          <div class="cover-container">
+
+
+
+            <div class="inner cover">
+              <h1 class="cover-heading">Andorra Tourist Media Pattern Mining</h1>
+              <p class="lead">Here's Social Mapping and its correlation with point of interests.</p>
+
+          </div>
+
+
+
+          {{>googleMap}}
+
+          <div class="inner cover">
+
+              <p class="lead">
+                <a href="#" class="btn btn-lg btn-default">Learn more</a>
+            </p>
+        </div>
+
+        <div class="mastfoot">
+          <div class="inner">
+            <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@Ernie Ho</a>.</p>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--     // <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+
 
 </body>
+
+
+
+
 <template name="task">
     <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
         <button class="delete">&times;</button>
@@ -378,6 +455,7 @@
 
 <template name="cover">
 
+
 </template>
 
 
@@ -386,15 +464,11 @@
 
 
 <template name="googleMap">
-  
+
 
 
     <div id="map">
-        <div class="ui-widget">
-            <label for="autocomplete">Enter Keyword For Photo: </label>
-            <input id="autocomplete"> {{> tweet}} {{> task}}
-            <!-- {{> googleMap}} -->
-        </div>
+
         <div id="map-canvas"></div>
         <button class="mark-tweets">
             Mark Tweets
@@ -402,9 +476,9 @@
     </div>
 
     <script type="text/javascript">
-    var map;
-    var infowindow;
-    var mcircle2f = {
+        var map;
+        var infowindow;
+        var mcircle2f = {
             path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
             fillColor: 'blue',
             fillOpacity: 1,
@@ -413,73 +487,73 @@
         };
 
 
-    function initMap() {
-        var pyrmont = {
-            lat: 42.5052221,
-            lng: 1.5219545
+        function initMap() {
+            var pyrmont = {
+                lat: 42.5052221,
+                lng: 1.5219545
+            };
+
+            map = new google.maps.Map(document.getElementById('map-canvas'), {
+                center: pyrmont,
+                zoom: 15
+            });
+
+            infowindow = new google.maps.InfoWindow();
+            var service = new google.maps.places.PlacesService(map);
+            service.radarSearch({
+                location: pyrmont,
+                radius: 2000,
+                type: ['store']
+            }, callback);
+            service.radarSearch({
+                location: pyrmont,
+                radius: 2000,
+                type: ['restaurant']
+            }, callback4);
+        }
+
+        function callback(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
         };
-
-        map = new google.maps.Map(document.getElementById('map-canvas'), {
-            center: pyrmont,
-            zoom: 15
-        });
-
-        infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-        service.radarSearch({
-            location: pyrmont,
-            radius: 2000,
-            type: ['store']
-        }, callback);
-        service.radarSearch({
-            location: pyrmont,
-            radius: 2000,
-            type: ['restaurant']
-        }, callback4);
-    }
-
-    function callback(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                createMarker(results[i]);
+        function callback4(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    createMarker4(results[i]);
+                }
             }
         }
-    };
-    function callback4(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                createMarker4(results[i]);
-            }
+
+        function createMarker(place) {
+            var placeLoc = place.geometry.location;
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location,
+                icon:mcircle2f
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
         }
-    }
 
-    function createMarker(place) {
-        var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker({
-            map: map,
-            position: place.geometry.location,
-            icon:mcircle2f
-        });
+        function createMarker4(place) {
+            var placeLoc = place.geometry.location;
+            var marker4 = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location,
+                icon:mcircle3f
+            });
 
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(place.name);
-            infowindow.open(map, this);
-        });
-    }
-
-    function createMarker4(place) {
-        var placeLoc = place.geometry.location;
-        var marker4 = new google.maps.Marker({
-            map: map,
-            position: place.geometry.location,
-            icon:mcircle3f
-        });
-
-        google.maps.event.addListener(marker4, 'click', function() {
-            infowindow.setContent(place.name);
-            infowindow.open(map, this);
-        });
-    }
+            google.maps.event.addListener(marker4, 'click', function() {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
+        }
     </script>
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&libraries=places&callback=initMap" async defer></script>
@@ -561,6 +635,6 @@
     // .attr("class", "x axis")
     // .attr("transform", "translate(0," + height + ")")
     // .call(xAxis);
-    </script>
+</script>
 
 </template>
