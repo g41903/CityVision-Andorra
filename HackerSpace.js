@@ -3,7 +3,215 @@ Tasks = new Mongo.Collection("tasks");
 Tweets = new Mongo.Collection("tweets");
 
 Tweets3 = new Mongo.Collection("tweets3");
-
+var styles = [{
+            "featureType": "all",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#815f5f"
+            }]
+        }, {
+            "featureType": "all",
+            "elementType": "labels.text",
+            "stylers": [{
+                "weight": "0.01"
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "all",
+            "elementType": "labels.text.fill",
+            "stylers": [{
+                "color": "#ffffff"
+            }, {
+                "gamma": "0.14"
+            }]
+        }, {
+            "featureType": "administrative",
+            "elementType": "all",
+            "stylers": [{
+                "hue": "#ffbf00"
+            }, {
+                "saturation": 100
+            }, {
+                "lightness": -22
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "administrative",
+            "elementType": "labels.text",
+            "stylers": [{
+                "color": "#ffffff"
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "administrative.land_parcel",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#9f4e4e"
+            }]
+        }, {
+            "featureType": "landscape",
+            "elementType": "all",
+            "stylers": [{
+                "hue": "#666666"
+            }, {
+                "saturation": -100
+            }, {
+                "lightness": -55
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "landscape.man_made",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#1f0303"
+            }]
+        }, {
+            "featureType": "landscape.man_made",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                "color": "#f91919"
+            }]
+        }, {
+            "featureType": "landscape.man_made",
+            "elementType": "labels.text",
+            "stylers": [{
+                "color": "#00fff6"
+            }]
+        }, {
+            "featureType": "landscape.man_made",
+            "elementType": "labels.text.fill",
+            "stylers": [{
+                "color": "#ffffff"
+            }]
+        }, {
+            "featureType": "landscape.natural.landcover",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#3b2828"
+            }]
+        }, {
+            "featureType": "landscape.natural.terrain",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#e17a7a"
+            }]
+        }, {
+            "featureType": "landscape.natural.terrain",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#bb2828"
+            }]
+        }, {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [{
+                "hue": "#555555"
+            }, {
+                "saturation": -100
+            }, {
+                "lightness": -57
+            }, {
+                "visibility": "on"
+            }]
+        }, {
+            "featureType": "poi",
+            "elementType": "labels",
+            "stylers": [{
+                "hue": "#555555"
+            }, {
+                "saturation": -100
+            }, {
+                "lightness": -57
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "all",
+            "stylers": [{
+                "saturation": -100
+            }, {
+                "lightness": "-61"
+            }, {
+                "visibility": "on"
+            }, {
+                "color": "#a9955b"
+            }, {
+                "gamma": "1.19"
+            }, {
+                "weight": "0.14"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#f9aa8a"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "labels.text",
+            "stylers": [{
+                "color": "#101010"
+            }, {
+                "weight": "0.01"
+            }]
+        }, {
+            "featureType": "road",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "road.highway.controlled_access",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "color": "#706e6e"
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "road.arterial",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "color": "#7d7676"
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "road.local",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "color": "#757373"
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "transit",
+            "elementType": "all",
+            "stylers": [{
+                "hue": "#444444"
+            }, {
+                "lightness": -64
+            }, {
+                "visibility": "off"
+            }]
+        }, {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [{
+                "hue": "#252525"
+            }, {
+                "saturation": -100
+            }, {
+                "lightness": -81
+            }, {
+                "visibility": "on"
+            }]
+        }];
 
 if (Meteor.isServer) {
     // This code only runs on the server
