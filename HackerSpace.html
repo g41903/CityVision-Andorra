@@ -9,7 +9,7 @@
         fill: steelblue;
         shape-rendering: crispEdges;
     }
-    
+
     .bar text {
         fill: #fff;
     }
@@ -183,10 +183,18 @@
     }];
 
 
+    var mcircle0f = {
+        path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+        fillColor: 'red',
+        fillOpacity: 1,
+        scale: 2,
+        strokeWeight: 0
+    };
+
 
     var mcircle1f = {
         path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-        fillColor: 'red',
+        fillColor: 'orange',
         fillOpacity: 1,
         scale: 2,
         strokeWeight: 0
@@ -194,7 +202,7 @@
     //orange store
     var mcircle2f = {
         path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-        fillColor: '#ff751a',
+        fillColor: 'yellow',
         fillOpacity: 0.5,
         scale: 1,
         strokeWeight: 0
@@ -207,10 +215,20 @@
         scale: 1,
         strokeWeight: 0
     };
+
+    var mcircle4f = {
+        path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+        fillColor: 'blue',
+        fillOpacity: 0.5,
+        scale: 1,
+        strokeWeight: 0
+    };
+
+
     //yellow shopping mall
     var mcircle5f = {
         path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-        fillColor: '#ffff00',
+        fillColor: 'white',
         fillOpacity: 1,
         scale: 1,
         strokeWeight: 0
@@ -223,7 +241,7 @@
         margin: 0;
         padding: 0;
     }
-    
+
     #map {
         height: 100%;
     }
@@ -254,7 +272,7 @@
             <!-- <div class="cover-container"> -->
             <div class="inner cover">
                 <h1 class="cover-heading">Andorra Tourist Media Pattern Mining</h1>
-                <p class="lead">Hereie's Social Mapping and its correlation with point of interests.</p>
+                <p class="lead">Here's Social Mapping and its correlation with point of interests.</p>
             </div>
             {{>googleMap}}
             <div class="inner cover">
@@ -360,7 +378,7 @@
 
         infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
-        alert('Count: ' + count);
+        // alert('Count: ' + count);
         if (count == 0) {
             service.radarSearch({
                 location: pyrmont,
@@ -374,7 +392,7 @@
                 location: pyrmont,
                 radius: 2000,
                 type: ['store']
-            }, callback4);
+            }, callback1);
         }
 
         if (count == 2) {
@@ -382,15 +400,15 @@
                 location: pyrmont,
                 radius: 2000,
                 type: ['transit_station']
-            }, callback5);
+            }, callback2);
         }
 
-                if (count == 3) {
+        if (count == 3) {
             service.radarSearch({
                 location: pyrmont,
                 radius: 2000,
                 type: ['shopping_mall']
-            }, callback5);
+            }, callback3);
         }
 
 
@@ -399,7 +417,7 @@
                 location: pyrmont,
                 radius: 2000,
                 type: ['natural_feature']
-            }, callback5);
+            }, callback4);
         }
 
 
@@ -490,7 +508,7 @@
 
 
 
-        function callback3(results, status) {
+    function callback3(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
                 createMarker3(results[i]);
@@ -561,16 +579,6 @@
             infowindow.open(map, this);
         });
     };
-
-
-
-
-
-
-
-
-
-
     </script>
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&libraries=places&callback=initMap" async defer></script>

@@ -206,21 +206,21 @@ if (Meteor.isClient) {
         routes = [route];
 
 
-        mcircle1f = {
-            path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-            fillColor: 'red',
-            fillOpacity: 1,
-            scale: 2,
-            strokeWeight: 0
-        };
+        // mcircle1f = {
+        //     path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+        //     fillColor: 'red',
+        //     fillOpacity: 1,
+        //     scale: 2,
+        //     strokeWeight: 0
+        // };
 
-        mcircle2f = {
-            path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
-            fillColor: 'red',
-            fillOpacity: 1,
-            scale: 2,
-            strokeWeight: 0
-        };
+        // mcircle2f = {
+        //     path: 'M0,0m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0',
+        //     fillColor: 'red',
+        //     fillOpacity: 1,
+        //     scale: 2,
+        //     strokeWeight: 0
+        // };
 
         rendererOptions = {
             preserveViewport: true
@@ -528,7 +528,7 @@ Template.body.events({
         var me = $(this);
         count=0;
         // do whatever with me
-        alert('Count: ' + count);
+        // alert('Count: ' + count);
         // alert(me.val());
         // me.hide();
         initMap(count);
@@ -577,7 +577,7 @@ return true;
 
         // do whatever with me
         count=1;
-        alert('Count: ' + count);
+        // alert('Count: ' + count);
         // me.hide();
         initMap(count);
 
@@ -626,7 +626,7 @@ return true;
     'click .transit_station_poi': function() {
         // var count = 0;
         count=2;
-        alert('Count: ' + count);
+        // alert('Count: ' + count);
         // me.hide();
         initMap(count);
         // alert('initMap');
@@ -673,7 +673,7 @@ return true;
     'click .shopping_mall_poi': function() {
         // var count = 0;
         count=3;
-                alert('Count: ' + count);
+                // alert('Count: ' + count);
         // me.hide();
         initMap(count);
         // alert('initMap');
@@ -961,7 +961,7 @@ Meteor.methods({
             position: new google.maps.LatLng(latitude, longitude),
             title: place,
             map: map,
-            icon: mcircle1f
+            icon: mcircle0f
                 // icon:instagram_img
             });
         // This can be changed from 'click' to 'hover' if desired
