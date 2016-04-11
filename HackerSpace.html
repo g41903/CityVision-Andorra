@@ -1,5 +1,5 @@
 <head>
-    <title>Andorra social mining- Ernie Ho</title>
+    <title>Andorra social mining-Media Lab</title>
     <style>
     body {
         font: 10px sans-serif;
@@ -75,9 +75,9 @@
         font-size: 16px;
     }
     </style>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
     <!-- // <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> -->
     <!-- // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAngOTb2hpkbzwfqGocH-q3D_cz9qnI0cc&callback=initMap" async defer></script> -->
@@ -282,7 +282,7 @@
             </div>
             <div class="mastfoot">
                 <div class="inner">
-                    <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@Ernie Ho</a>.</p>
+                    <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@Media Lab</a>.</p>
                 </div>
             </div>
             <!-- </div> -->
@@ -311,16 +311,16 @@
     </li>
 </template>
 <template name="tweet">
-    <input type="checkbox" checked="{{checked}}" class="tweet-checked" />
+    <!-- <input type="checkbox" checked="{{checked}}" class="tweet-checked" /> -->
     <!-- {{tweetJson.data.location}} -->
     <!--     {{#each tweetJson}} {{#each data}} {{location.latitude}}; {{location.longitude}}; {{/each}} {{/each}} -->
     <!-- {{tweetJson}} -->
     <!-- {{getTweets}} -->
     {{getTweets3}}
-    <input type="button" checked="{{checked}}" class="test-router" />
+<!--     <input type="button" checked="{{checked}}" class="test-router" />
     <button class="test-router">
         Come!
-    </button>
+    </button> -->
 </template>
 <template name="restaurant_poi">
     <script type="text/javascript">
@@ -329,23 +329,23 @@
 <template name="googleMap">
     <div id="map" height="400px">
         <div id="map-canvas"></div>
-        //0
+        <!-- //0 -->
         <button class="restaurant_poi" value='0'>
             Restuarant
         </button>
-        //1
+        <!-- //1 -->
         <button class="store_poi" value='1'>
             Store
         </button>
-        //2
+        <!-- //2 -->
         <button class="transit_station_poi" value='2'>
             transit_station
         </button>
-        //3
+        <!-- //3 -->
         <button class="shopping_mall_poi" value='3'>
             Shopping_mall
         </button>
-        //4
+        <!-- //4 -->
         <button class="natural_feature_poi" value="4">
             Natural_feature
         </button>

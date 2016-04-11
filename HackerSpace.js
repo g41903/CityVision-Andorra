@@ -557,8 +557,6 @@ Template.body.events({
                         page_url=record_val['page_url'];
                         tweet_details.push([img_date+" "+img_tags, img_latitude, img_longitude, page_url]);
                         // social_marker_locations.push([tags.toString(),latitude,longitude,myContent]);
-
-
                         // }
                     }
                     console.log(JSON.stringify(tweet_details));
@@ -861,12 +859,12 @@ Meteor.methods({
             throw new Meteor.Error("not-authorized");
         }
 
-        Tasks.insert({
-            text: text,
-            createdAt: new Date(),
-            owner: Meteor.userId(),
-            username: Meteor.user().username
-        });
+        // Tasks.insert({
+        //     text: text,
+        //     createdAt: new Date(),
+        //     owner: Meteor.userId(),
+        //     username: Meteor.user().username
+        // });
     },
     deleteTask: function(taskId) {
         var task = Tasks.findOne(taskId);
